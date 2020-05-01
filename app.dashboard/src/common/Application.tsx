@@ -1,6 +1,6 @@
 import React, { useRef, FunctionComponent } from 'react';
 import { Provider } from 'react-redux';
-import { Notification, NotificationContext } from '@bucket-of-bolts/ui';
+import { Notifications, NotificationContext } from './components/Notifications';
 
 import { ApplicationUI } from './components';
 import { ThemeContext, theme } from './style';
@@ -23,16 +23,18 @@ const settings = new Settings();
 const client = new Client(settings);
 
 export const Application: FunctionComponent = () => {
-    const notificationRef = useRef();
+    const notificationRef = useRef<Notifications>();
 
     return (
         <ThemeContext.Provider value={theme}>
             <ClientContext.Provider value={client}>
                 <Provider store={store}>
-                    <Notification
+                    <Notifications
                         ref={notificationRef}
                         theme={theme.notifications}
-                    />
+                    >
+                        {() => <div>Message!</div>}
+                    </Notifications>
                     <NotificationContext.Provider value={notificationRef}>
                         <ApplicationUI
                             history={history}
