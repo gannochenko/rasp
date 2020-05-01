@@ -1,18 +1,19 @@
 import React, { ComponentType } from 'react';
-import { MessageInputType, NotificationReference } from './type';
+import { EventEmitter } from 'events';
+import { MessageInputType } from './type';
+import { Nullable } from '../../../type';
 
-export const NotificationContext = React.createContext<NotificationReference>({
-    current: null,
-});
+export const NotificationContext = React.createContext<Nullable<EventEmitter>>(
+    null,
+);
 export const withNotification = (Component: ComponentType) => {
     const WithNotification = (props: any) => (
         <NotificationContext.Consumer>
-            {(reference: NotificationReference) => (
+            {(emitter: Nullable<EventEmitter>) => (
                 <Component
                     {...props}
                     notify={(messageInput: MessageInputType) =>
-                        reference.current &&
-                        reference.current.notify(messageInput)
+                        emitter && emitter.emit('notification', messageInput)
                     }
                 />
             )}

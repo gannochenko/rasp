@@ -1,13 +1,16 @@
-import { HTMLAttributes, MutableRefObject, ReactNode } from 'react';
+import { ReactNode, Ref } from 'react';
 import { ObjectLiteral } from '../../../type';
-import { Notifications } from './Notifications';
+import { EventEmitter } from 'events';
 
 export type NotificationsPropsType = {
     children: Children;
-    ref: NotificationReference;
+    emitter: EventEmitter;
 };
 
-type Children = (params: { closeMessage: (id: number) => void }) => ReactNode;
+type Children = (params: {
+    messages: MessageRecordWithRef[];
+    onCloseMessage: (id: number) => void;
+}) => ReactNode;
 
 export type MessageType = {
     text: string;
@@ -27,8 +30,12 @@ export type MessageRecord = {
     closing: boolean;
 } & MessageType;
 
+export type MessageRecordWithRef = MessageRecord & {
+    ref: (ref: HTMLDivElement) => void;
+};
+
 export type MessageIdToRef = {
     [key: number]: HTMLDivElement;
 };
 
-export type NotificationReference = MutableRefObject<Notifications | undefined>;
+export type Notify = (message: MessageInputType) => void;

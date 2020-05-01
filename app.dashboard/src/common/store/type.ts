@@ -1,8 +1,9 @@
 import { History } from 'history';
 import { Store } from 'redux';
-import { Error, Route, Notify } from '../type';
+import { Error, Route } from '../type';
 import { Client } from '../lib';
 import { Nullable, ObjectLiteral } from '../../type';
+import { Notify } from '../components/Notifications/type';
 
 export interface StoreParameters {
     history: History<any>;

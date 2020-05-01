@@ -1,5 +1,6 @@
-import React, { useRef, FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Provider } from 'react-redux';
+import { EventEmitter } from 'events';
 import { Notifications, NotificationContext } from './components/Notifications';
 
 import { ApplicationUI } from './components';
@@ -21,21 +22,17 @@ const { store, saga, unsubscribe } = createStore({
 });
 const settings = new Settings();
 const client = new Client(settings);
+const emitter = new EventEmitter();
 
 export const Application: FunctionComponent = () => {
-    const notificationRef = useRef<Notifications>();
-
     return (
         <ThemeContext.Provider value={theme}>
             <ClientContext.Provider value={client}>
                 <Provider store={store}>
-                    <Notifications
-                        ref={notificationRef}
-                        theme={theme.notifications}
-                    >
+                    <Notifications emitter={emitter}>
                         {() => <div>Message!</div>}
                     </Notifications>
-                    <NotificationContext.Provider value={notificationRef}>
+                    <NotificationContext.Provider value={emitter}>
                         <ApplicationUI
                             history={history}
                             theme={theme}

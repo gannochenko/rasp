@@ -18,10 +18,6 @@ export const NotificationsRoot = styled.div`
     top: 5rem;
     right: 0;
     z-index: 1300;
-    ${({ theme }) =>
-        theme.components &&
-        theme.components.Notifications &&
-        theme.components.Notifications.root}
 `;
 
 export const MessageWrap = styled.div<{ closing: boolean }>`

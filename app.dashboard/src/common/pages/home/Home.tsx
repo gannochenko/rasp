@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
-import { withNotification, withModal } from '@bucket-of-bolts/ui';
+import { withModal } from '@bucket-of-bolts/ui';
+import { withNotification } from '../../components/Notifications';
 import {
     useErrorNotification,
     useDispatchUnload,
@@ -30,6 +31,13 @@ const HomePageComponent: FunctionComponent<HomePageProperties> = ({
 
     return (
         <Layout title="Hello from Dashboard">
+            <Button
+                onClick={() => {
+                    notify({ text: 'MESSAGE!', lifeTime: 1000 });
+                }}
+            >
+                Test
+            </Button>
             <p>
                 This is a demo page. If you see this page, it means that at
                 least <code>react</code>, <code>react-router</code>,{' '}

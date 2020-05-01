@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-import { NotificationsRoot, MessageWrap } from './style';
 import {
     MessageIdToRef,
     MessageInputType,
@@ -20,7 +18,19 @@ export class Notifications extends Component<NotificationsPropsType, {}> {
         this.messages = [];
     }
 
-    notify(messageInput: MessageInputType) {
+    componentDidMount(): void {
+        const { emitter } = this.props;
+
+        emitter.on('notification', this.notify);
+    }
+
+    componentWillUnmount(): void {
+        const { emitter } = this.props;
+
+        emitter.off('notification', this.notify);
+    }
+
+    notify = (messageInput: MessageInputType) => {
         let message: MessageType;
 
         if (typeof messageInput === 'string') {
@@ -58,7 +68,7 @@ export class Notifications extends Component<NotificationsPropsType, {}> {
         this.messages.push(messageRecord);
 
         this.forceUpdate();
-    }
+    };
 
     closeMessage(id: number) {
         const message = this.messages.find((item) => item.id === id);
@@ -96,20 +106,15 @@ export class Notifications extends Component<NotificationsPropsType, {}> {
 
     render() {
         const { children } = this.props;
-        return (
-            <NotificationsRoot>
-                {this.messages.map((message) => (
-                    <MessageWrap
-                        key={message.id}
-                        ref={(ref) => {
-                            this.messageHeights[message.id] = ref!;
-                        }}
-                        closing={message.closing}
-                    >
-                        {children({ closeMessage: this.closeMessage })}
-                    </MessageWrap>
-                ))}
-            </NotificationsRoot>
-        );
+
+        return children({
+            messages: this.messages.map((message) => ({
+                ...message,
+                ref: (ref) => {
+                    this.messageHeights[message.id] = ref!;
+                },
+            })),
+            onCloseMessage: this.closeMessage,
+        });
     }
 }
