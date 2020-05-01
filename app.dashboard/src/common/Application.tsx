@@ -13,6 +13,7 @@ import {
     dismissOnReady,
 } from './lib';
 import { createStore } from './store';
+import { NotificationUI } from './components/NotificationUI';
 
 const history = createHistory();
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -30,7 +31,7 @@ export const Application: FunctionComponent = () => {
             <ClientContext.Provider value={client}>
                 <Provider store={store}>
                     <Notifications emitter={emitter}>
-                        {() => <div>Message!</div>}
+                        {(props) => <NotificationUI {...props} />}
                     </Notifications>
                     <NotificationContext.Provider value={emitter}>
                         <ApplicationUI
