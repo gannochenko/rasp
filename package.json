@@ -1,0 +1,19 @@
+{
+    "name": "rasp",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "script/start.sh",
+        "dev": "script/start.sh",
+        "pull-images": "script/pull-images.sh"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "concurrently": "^5.2.0",
+        "js-yaml": "^3.13.1"
+    },
+    "dependencies": {}
+}
