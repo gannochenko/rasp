@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
-// import { withNotification } from '@gannochenko/ui';
-import { withNotification } from '../../components/Notifications';
+import { withNotification } from '@gannochenko/ui';
 import {
     useErrorNotification,
     useDispatchUnload,

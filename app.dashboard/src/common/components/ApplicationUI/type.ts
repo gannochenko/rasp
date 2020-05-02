@@ -1,6 +1,5 @@
 import { History } from 'history';
-// import { NotificationContextPropsType } from '@gannochenko/ui';
-import { NotificationContextPropsType } from '../Notifications';
+import { NotificationContextPropsType } from '@gannochenko/ui';
 import { ControllerProperties, PageState } from '../../store/type';
 import { Nullable } from '../../../type';
 

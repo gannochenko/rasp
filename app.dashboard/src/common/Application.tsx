@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Provider } from 'react-redux';
 import { EventEmitter } from 'events';
-// import { NotificationContext } from '@gannochenko/ui';
-import { NotificationContext } from './components/Notifications';
+import { NotificationContext } from '@gannochenko/ui';
 
 import { ApplicationUI } from './components';
 import { ThemeContext, theme } from './style';

@@ -1,6 +1,6 @@
 import { History } from 'history';
 import { Store } from 'redux';
-import { Error, Route } from '../type';
+import { Error } from '../type';
 import { Client } from '../lib';
 import { Nullable, ObjectLiteral } from '../../type';
 
@@ -31,10 +31,6 @@ export type ControllerProperties = {
     dispatchLoad?: DispatchLoad;
     dispatchUnload?: DispatchUnload;
 };
-
-export interface PageProperties extends ControllerProperties {
-    route: Route;
-}
 
 export type Dispatch = (action: Action) => void;
 

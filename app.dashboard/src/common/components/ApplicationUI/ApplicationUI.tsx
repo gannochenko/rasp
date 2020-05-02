@@ -3,8 +3,7 @@ import { Switch } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-// import {withNotification, Notifications} from '@gannochenko/ui';
-import { withNotification, Notifications } from '../Notifications';
+import { withNotification, Notifications } from '@gannochenko/ui';
 
 import { MainProgressBar } from './style';
 import { ApplicationProperties, ApplicationPropertiesAlt } from './type';
