@@ -1,8 +1,6 @@
 import React, { useEffect, FunctionComponent } from 'react';
-// import { Switch } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
 import { connect } from 'react-redux';
-// import {  } from 'react-router-dom';
 import {
     withNotification,
     Notifications,
@@ -10,7 +8,6 @@ import {
     Switch,
 } from '@gannochenko/ui';
 
-import { MainProgressBar } from './style';
 import { ApplicationProperties, ApplicationPropertiesAlt } from './type';
 import mapDispatchToProps from './dispatch';
 import {
@@ -23,8 +20,6 @@ import { SHOW_OFFLINE, SHOW_ONLINE } from './reducer';
 import { GlobalStyle } from '../../style';
 
 import {
-    ForbiddenPage,
-    NotFoundPage,
     HomePageRenderer,
     NotFoundPageRenderer,
     ForbiddenPageRenderer,
@@ -32,6 +27,7 @@ import {
 } from '../../pages';
 import { ObjectLiteral } from '../../../type';
 import { NotificationUI } from '../NotificationUI';
+import { PageProgress } from '../PageProgress';
 
 const ApplicationUIComponent: FunctionComponent<ApplicationProperties> = ({
     ready = false,
@@ -58,7 +54,7 @@ const ApplicationUIComponent: FunctionComponent<ApplicationProperties> = ({
             <Notifications emitter={notificationsEventEmitter}>
                 {(props) => <NotificationUI {...props} />}
             </Notifications>
-            <MainProgressBar observeGlobalLock />
+            <PageProgress />
             {ready && (
                 <ConnectedRouter history={history}>
                     <Switch>

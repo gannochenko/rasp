@@ -4,10 +4,10 @@ import { Error } from '../type';
 import { Client } from '../lib';
 import { Nullable, ObjectLiteral } from '../../type';
 
-export interface StoreParameters {
+export type StoreParameters = {
     history: History<any>;
     onChange: (parameters: { store: Store; unsubscribe: () => void }) => void;
-}
+};
 
 export type PageState = {
     loading: boolean;
@@ -15,10 +15,10 @@ export type PageState = {
     error: Nullable<Error[]>;
 };
 
-export interface Action<P = ObjectLiteral> {
+export type Action<P = ObjectLiteral> = {
     type: string;
     payload: P;
-}
+};
 
 export type LoadAction = Action<Partial<{ client: Client }>>;
 
