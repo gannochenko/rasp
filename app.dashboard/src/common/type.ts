@@ -15,7 +15,7 @@ export interface RouteLocation {
 }
 
 export interface Route {
-    location: RouteLocation;
+    location?: RouteLocation;
 }
 
 export interface ErrorMessage {

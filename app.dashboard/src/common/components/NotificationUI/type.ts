@@ -1,8 +1,8 @@
 import { HTMLAttributes } from 'react';
-import { MessageRecordWithRef } from '@gannochenko/ui';
+import { MessageRecordWithRefType } from '@gannochenko/ui';
 
 export type NotificationUIPropsType = {
-    messages: MessageRecordWithRef[];
+    messages: MessageRecordWithRefType[];
     onCloseMessage: (id: number) => void;
 } & HTMLAttributes<HTMLElement>;
 

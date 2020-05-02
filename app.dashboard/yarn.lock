@@ -986,7 +986,7 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
-"@gannochenko/etc@^1.0.1":
+"@gannochenko/etc@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gannochenko/etc/-/etc-1.0.2.tgz#f7b9523be6fe3a196f7bfa52ad43d7979f437079"
   integrity sha512-vSan6J8BWh7P9YUQA/5UpEB1O9kRAXS2YsYO9OYsjIGVwWVpZDZAWWx9Oe61wqbdmkWkrsqr8GklqZScOP4RFw==
@@ -995,9 +995,9 @@
     naming-style "^1.0.1"
 
 "@gannochenko/ui@^1.0.2":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@gannochenko/ui/-/ui-1.0.8.tgz#82e7045919df5584ec28f01f9ccfe7d587b50d87"
-  integrity sha512-2J7mzC+xJKFyYh/55tH7BBQXRC6zYFnp1V4D1cKkxXaHYmjGwXxCwVF9Cn7N1nXYDblLHP/mf1TIXW/Kt89KPQ==
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@gannochenko/ui/-/ui-1.0.11.tgz#ea55f16a5d0c5d1ce5b3aacbf370337242833918"
+  integrity sha512-0kAS1buCa/sUlnknTQ1eQB/CRT5RbBIrskvhqyqziaRvlDwO3OloBwnyGDjUtdw5RoLKhbGoK1yju6YR+nKa1A==
   dependencies:
     events ">=3.1.0"
     throttle-debounce "^2.1.0"

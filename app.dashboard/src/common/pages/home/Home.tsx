@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
-import { withNotification } from '@gannochenko/ui';
+import { RendererType, withNotification } from '@gannochenko/ui';
+import { Link } from 'react-router-dom';
 import {
     useErrorNotification,
     useDispatchUnload,
@@ -29,7 +30,8 @@ const HomePageComponent: FunctionComponent<HomePageProperties> = ({
     useErrorNotification(error, notify);
 
     return (
-        <Layout title="Hello from Dashboard">
+        <>
+            <Link to="/403">403</Link>
             <Button
                 variant="contained"
                 color="primary"
@@ -68,7 +70,7 @@ const HomePageComponent: FunctionComponent<HomePageProperties> = ({
             </p>
             <p>Enjoy!</p>
             <br />
-        </Layout>
+        </>
     );
 };
 
@@ -79,4 +81,10 @@ export const HomePage = withNotification<HomePagePropsAlt>(
             mapDispatchToProps,
         )(HomePageComponent),
     ),
+);
+
+export const HomePageRenderer: RendererType = () => (
+    <Layout title="Hello from Dashboard">
+        <HomePage />
+    </Layout>
 );

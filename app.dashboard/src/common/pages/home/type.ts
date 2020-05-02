@@ -2,9 +2,7 @@ import { NotificationContextPropsType } from '@gannochenko/ui';
 import { ControllerProperties, PageState } from '../../store/type';
 import { Route } from '../../type';
 
-export type HomePagePropsAlt = {
-    route: Route;
-};
+export type HomePagePropsAlt = {};
 
 export type HomePageProperties = HomePagePropsAlt &
     NotificationContextPropsType &
