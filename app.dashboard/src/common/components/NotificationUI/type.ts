@@ -1,5 +1,6 @@
 import { HTMLAttributes } from 'react';
-import { MessageRecordWithRef } from '../Notifications/type';
+// import { MessageRecordWithRef } from '@gannochenko/ui';
+import { MessageRecordWithRef } from '../Notifications';
 
 export type NotificationUIPropsType = {
     messages: MessageRecordWithRef[];

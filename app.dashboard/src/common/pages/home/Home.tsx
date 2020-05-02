@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
-import { withModal } from '@bucket-of-bolts/ui';
+import { Button } from '@material-ui/core';
+// import { withNotification } from '@gannochenko/ui';
 import { withNotification } from '../../components/Notifications';
 import {
     useErrorNotification,
@@ -9,11 +10,11 @@ import {
     useDispatchLoad,
 } from '../../lib';
 
-import { Layout, Button } from '../../components';
+import { Layout } from '../../components';
 
 import Mushroom from '../../../../public/mushroom.png';
-import { CoinRow, Coin, ButtonWrap } from './style';
-import { HomePageProperties } from './type';
+import { CoinRow, Coin } from './style';
+import { HomePageProperties, HomePagePropsAlt } from './type';
 import { mapDispatchToProps } from './dispatch';
 import { ObjectLiteral } from '../../../type';
 
@@ -23,7 +24,6 @@ const HomePageComponent: FunctionComponent<HomePageProperties> = ({
     client,
     error,
     notify,
-    openConfirmModal,
 }) => {
     useDispatchLoad(dispatchLoad, client);
     useDispatchUnload(dispatchUnload);
@@ -32,6 +32,8 @@ const HomePageComponent: FunctionComponent<HomePageProperties> = ({
     return (
         <Layout title="Hello from Dashboard">
             <Button
+                variant="contained"
+                color="primary"
                 onClick={() => {
                     notify({ text: 'MESSAGE!', lifeTime: 1000 });
                 }}
@@ -56,36 +58,6 @@ const HomePageComponent: FunctionComponent<HomePageProperties> = ({
                 <img src={Mushroom} width="50" height="50" />
             </p>
             <p>
-                If the following button is gray and shadow-ish, then{' '}
-                <code>jss</code> plugin works:
-                <br />
-                <Button
-                    onClick={() => {
-                        openConfirmModal(
-                            <span>This is how we ask questions.</span>,
-                            ({ closeModal }) => {
-                                return [
-                                    <ButtonWrap key="yes">
-                                        <Button
-                                            onClick={() => {
-                                                closeModal();
-                                            }}
-                                        >
-                                            Yes
-                                        </Button>
-                                    </ButtonWrap>,
-                                    <ButtonWrap key="no">
-                                        <Button onClick={closeModal}>No</Button>
-                                    </ButtonWrap>,
-                                ];
-                            },
-                        );
-                    }}
-                >
-                    I am a gray button, click me
-                </Button>
-            </p>
-            <p>
                 If you see three coins in a row below, then{' '}
                 <code>styled-components</code> module is allright:
                 <br />
@@ -101,13 +73,11 @@ const HomePageComponent: FunctionComponent<HomePageProperties> = ({
     );
 };
 
-export const HomePage = withModal(
-    withNotification(
-        withClient(
-            connect(
-                (state: ObjectLiteral) => state.home,
-                mapDispatchToProps,
-            )(HomePageComponent),
-        ),
+export const HomePage = withNotification<HomePagePropsAlt>(
+    withClient(
+        connect(
+            (state: ObjectLiteral) => state.home,
+            mapDispatchToProps,
+        )(HomePageComponent),
     ),
 );

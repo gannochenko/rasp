@@ -17,7 +17,3 @@ export const Coin = styled.div`
     ${rectangle('1rem')}
     ${backgroundCover(CoinImg)}
 `;
-
-export const ButtonWrap = styled.div`
-    display: inline-block;
-`;

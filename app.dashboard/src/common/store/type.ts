@@ -3,7 +3,6 @@ import { Store } from 'redux';
 import { Error, Route } from '../type';
 import { Client } from '../lib';
 import { Nullable, ObjectLiteral } from '../../type';
-import { Notify } from '../components/Notifications/type';
 
 export interface StoreParameters {
     history: History<any>;
@@ -23,16 +22,15 @@ export interface Action<P = ObjectLiteral> {
 
 export type LoadAction = Action<Partial<{ client: Client }>>;
 
-export interface ControllerProperties {
+export type ControllerProperties = {
     ready: boolean;
+    offline: boolean;
     client: Client;
-    theme: ObjectLiteral;
     error: Nullable<Error[]>;
     dispatch?: (action: Action) => void;
     dispatchLoad?: DispatchLoad;
     dispatchUnload?: DispatchUnload;
-    notify: Notify;
-}
+};
 
 export interface PageProperties extends ControllerProperties {
     route: Route;

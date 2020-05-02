@@ -1,12 +1,14 @@
-import { ReactNode } from 'react';
-import { PageProperties, PageState } from '../../store/type';
+import { NotificationContextPropsType } from '@gannochenko/ui';
+import { ControllerProperties, PageState } from '../../store/type';
+import { Route } from '../../type';
 
-export interface HomePageProperties extends PageProperties {
-    openConfirmModal: (
-        text: ReactNode,
-        onAction: (parameters: { closeModal: () => void }) => void,
-    ) => void;
-}
+export type HomePagePropsAlt = {
+    route: Route;
+};
+
+export type HomePageProperties = HomePagePropsAlt &
+    NotificationContextPropsType &
+    ControllerProperties;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface HomePageState extends PageState {}

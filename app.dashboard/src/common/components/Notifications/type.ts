@@ -1,6 +1,6 @@
 import { ReactNode, Ref } from 'react';
-import { ObjectLiteral } from '../../../type';
 import { EventEmitter } from 'events';
+import { ObjectLiteral } from '../../../type';
 
 export type NotificationsPropsType = {
     children: Children;
@@ -39,3 +39,8 @@ export type MessageIdToRef = {
 };
 
 export type Notify = (message: MessageInputType) => void;
+
+export type NotificationContextPropsType = {
+    notificationsEventEmitter: EventEmitter;
+    notify: Notify;
+};

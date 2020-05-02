@@ -995,11 +995,11 @@
     naming-style "^1.0.1"
 
 "@gannochenko/ui@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@gannochenko/ui/-/ui-1.0.2.tgz#1d54d2b41814594e2b6709dcd980d3fb57cd7efc"
-  integrity sha512-3QriEwIbnt/1P28N0pFD4F4CH4Huw1uL1G1nWWFKUZj+46Wy4RaI9S57jLmhHPjU29/35mQl6qzEWtzKwfQeCQ==
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@gannochenko/ui/-/ui-1.0.7.tgz#b6db4b5e84d5cf62ec397979b9a53e98f4f4a913"
+  integrity sha512-CUNcdTbAvMeo3d4o3G3X3Cd5zLzCTWYw3DRMwHcjnBJ9Kd0EO6Out7UMyBpIEP836DnYH3Rg/7JVaVFijLFnRg==
   dependencies:
-    events "^3.1.0"
+    events ">=3.1.0"
     throttle-debounce "^2.1.0"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
@@ -4363,7 +4363,7 @@ eventemitter3@^4.0.0:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.0.tgz#d65176163887ee59f386d64c82610b696a4a74eb"
   integrity sha512-qerSRB0p+UDEssxTtm6EDKcE7W4OaoisfIMl4CngyEhjpYglocpNg6UEqCvemdGhosAsg4sO2dXJOdyBifPGCg==
 
-events@^3.0.0, events@^3.1.0:
+events@>=3.1.0, events@^3.0.0, events@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/events/-/events-3.1.0.tgz#84279af1b34cb75aa88bf5ff291f6d0bd9b31a59"
   integrity sha512-Rv+u8MLHNOdMjTAFeT3nCjHn2aGlx435FP/sDHNaRhDEMwyI/aB22Kj2qIN8R0cw3z28psEQLYwxVKLsKrMgWg==

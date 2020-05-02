@@ -14,6 +14,7 @@ import {
     wait,
     waitForElement,
 } from '@testing-library/react';
+import { EventEmitter } from 'events';
 import userEvent from '@testing-library/user-event';
 
 import { Notifications } from '../Notifications';
@@ -25,7 +26,9 @@ describe('<Notifications />', () => {
 
     it('should render itself without errors', async () => {
         const { container, getByTestId } = render(
-            <Notifications>{() => null}</Notifications>,
+            <Notifications emitter={new EventEmitter()}>
+                {() => null}
+            </Notifications>,
         );
 
         // // ///////////////////////

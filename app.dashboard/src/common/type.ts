@@ -11,7 +11,7 @@ export interface RouteLocationSearch {
 }
 
 export interface RouteLocation {
-    search?: RouteLocationSearch;
+    search?: RouteLocationSearch | string;
 }
 
 export interface Route {

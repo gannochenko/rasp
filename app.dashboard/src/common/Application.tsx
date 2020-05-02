@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { Provider } from 'react-redux';
 import { EventEmitter } from 'events';
-import { Notifications, NotificationContext } from './components/Notifications';
+// import { NotificationContext } from '@gannochenko/ui';
+import { NotificationContext } from './components/Notifications';
 
 import { ApplicationUI } from './components';
 import { ThemeContext, theme } from './style';
@@ -13,7 +14,6 @@ import {
     dismissOnReady,
 } from './lib';
 import { createStore } from './store';
-import { NotificationUI } from './components/NotificationUI';
 
 const history = createHistory();
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -30,15 +30,8 @@ export const Application: FunctionComponent = () => {
         <ThemeContext.Provider value={theme}>
             <ClientContext.Provider value={client}>
                 <Provider store={store}>
-                    <Notifications emitter={emitter}>
-                        {(props) => <NotificationUI {...props} />}
-                    </Notifications>
                     <NotificationContext.Provider value={emitter}>
-                        <ApplicationUI
-                            history={history}
-                            theme={theme}
-                            client={client}
-                        />
+                        <ApplicationUI history={history} client={client} />
                     </NotificationContext.Provider>
                 </Provider>
             </ClientContext.Provider>

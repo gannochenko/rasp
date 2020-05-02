@@ -6,7 +6,9 @@ import { Nullable } from '../../../type';
 export const NotificationContext = React.createContext<Nullable<EventEmitter>>(
     null,
 );
-export const withNotification = (Component: ComponentType) => {
+export const withNotification = <P extends {} = any>(
+    Component: ComponentType<any>,
+) => {
     const WithNotification = (props: any) => (
         <NotificationContext.Consumer>
             {(emitter: Nullable<EventEmitter>) => (
@@ -15,6 +17,7 @@ export const withNotification = (Component: ComponentType) => {
                     notify={(messageInput: MessageInputType) =>
                         emitter && emitter.emit('notification', messageInput)
                     }
+                    notificationsEventEmitter={emitter}
                 />
             )}
         </NotificationContext.Consumer>
@@ -24,5 +27,5 @@ export const withNotification = (Component: ComponentType) => {
         Component.displayName || Component.name || 'Component';
 
     WithNotification.displayName = `withNotification(${wrappedComponentName})`;
-    return WithNotification;
+    return WithNotification as ComponentType<P>;
 };
