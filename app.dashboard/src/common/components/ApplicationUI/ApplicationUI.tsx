@@ -54,7 +54,6 @@ const ApplicationUIComponent: FunctionComponent<ApplicationProperties> = ({
                         <Route
                             exact
                             path="/"
-                            // @ts-ignore
                             render={(route) => <HomePage route={route} />}
                         />
                         <Route path="/403" render={() => <ForbiddenPage />} />
