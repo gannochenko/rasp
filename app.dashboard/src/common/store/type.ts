@@ -9,11 +9,11 @@ export interface StoreParameters {
     onChange: (parameters: { store: Store; unsubscribe: () => void }) => void;
 }
 
-export interface PageState {
+export type PageState = {
     loading: boolean;
     ready: boolean;
     error: Nullable<Error[]>;
-}
+};
 
 export interface Action<P = ObjectLiteral> {
     type: string;

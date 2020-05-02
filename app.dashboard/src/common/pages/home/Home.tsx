@@ -14,11 +14,11 @@ import { Layout } from '../../components';
 
 import Mushroom from '../../../../public/mushroom.png';
 import { CoinRow, Coin } from './style';
-import { HomePageProperties, HomePagePropsAlt } from './type';
+import { HomePagePropsType, HomePagePropsAlt } from './type';
 import { mapDispatchToProps } from './dispatch';
 import { ObjectLiteral } from '../../../type';
 
-const HomePageComponent: FunctionComponent<HomePageProperties> = ({
+const HomePageComponent: FunctionComponent<HomePagePropsType> = ({
     dispatchLoad,
     dispatchUnload,
     client,
