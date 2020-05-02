@@ -31,7 +31,7 @@ const HomePageComponent: FunctionComponent<HomePagePropsType> = ({
 
     return (
         <>
-            <Link to="/403">403</Link>
+            <Link to="/page2">Page 2</Link>
             <Button
                 variant="contained"
                 color="primary"

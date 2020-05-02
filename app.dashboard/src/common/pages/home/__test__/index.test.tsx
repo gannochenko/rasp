@@ -9,7 +9,7 @@ import { fireEvent, cleanup, render, prettyDOM } from '@testing-library/react';
 
 import { HomePage } from '..';
 
-describe('<HomePage />', () => {
+describe('<Page2 />', () => {
     // beforeAll(async () => {
     // });
     // beforeEach(async () => {
