@@ -40,9 +40,18 @@ module.exports = (env, argv) => {
             symlinks: false,
         },
         devtool: development ? 'source-map' : false,
-        optimization: {
-            usedExports: true,
-        },
+        optimization: development
+            ? {
+                  usedExports: true,
+              }
+            : {
+                  usedExports: true,
+                  splitChunks: development
+                      ? null
+                      : {
+                            chunks: 'all',
+                        },
+              },
         module: {
             rules: [
                 {
