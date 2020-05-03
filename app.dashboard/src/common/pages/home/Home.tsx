@@ -12,8 +12,6 @@ import {
 
 import { Layout } from '../../components';
 
-import Mushroom from '../../../../public/mushroom.png';
-import { CoinRow, Coin } from './style';
 import { HomePagePropsType, HomePagePropsAlt } from './type';
 import { mapDispatchToProps } from './dispatch';
 import { ObjectLiteral } from '../../../type';
@@ -41,35 +39,6 @@ const HomePageComponent: FunctionComponent<HomePagePropsType> = ({
             >
                 Test
             </Button>
-            <p>
-                This is a demo page. If you see this page, it means that at
-                least <code>react</code>, <code>react-router</code>,{' '}
-                <code>redux</code> and <code>redux-saga</code> work properly.
-            </p>
-            <p>
-                If you see this big mushroom, it means that static assets are
-                being served normally:
-                <br />
-                <img src="/mushroom.png" width="50" height="50" />
-            </p>
-            <p>
-                And if you see a second big mushroom, that indicates that{' '}
-                <code>url-loader</code> plugin works as expected:
-                <br />
-                <img src={Mushroom} width="50" height="50" />
-            </p>
-            <p>
-                If you see three coins in a row below, then{' '}
-                <code>styled-components</code> module is allright:
-                <br />
-                <CoinRow>
-                    <Coin />
-                    <Coin />
-                    <Coin />
-                </CoinRow>
-            </p>
-            <p>Enjoy!</p>
-            <br />
         </>
     );
 };
@@ -84,7 +53,7 @@ export const HomePage = withNotification<HomePagePropsAlt>(
 );
 
 export const HomePageRenderer: RendererType = () => (
-    <Layout title="Hello from Dashboard">
+    <Layout>
         <HomePage />
     </Layout>
 );

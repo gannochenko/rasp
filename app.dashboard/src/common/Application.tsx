@@ -2,9 +2,10 @@ import React, { FunctionComponent } from 'react';
 import { Provider } from 'react-redux';
 import { EventEmitter } from 'events';
 import { NotificationContext } from '@gannochenko/ui';
+import { ThemeProvider as MUIThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from 'styled-components';
 
 import { ApplicationUI } from './components';
-import { ThemeContext, theme } from './style';
 import {
     ServiceManager,
     ServiceManagerContext,
@@ -12,6 +13,7 @@ import {
     dismissOnReady,
 } from './lib';
 import { createStore } from './store';
+import { theme } from './style';
 
 const history = createHistory();
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -24,17 +26,19 @@ const emitter = new EventEmitter();
 
 export const Application: FunctionComponent = () => {
     return (
-        <ThemeContext.Provider value={theme}>
-            <ServiceManagerContext.Provider value={serviceManager}>
-                <Provider store={store}>
-                    <NotificationContext.Provider value={emitter}>
-                        <ApplicationUI
-                            history={history}
-                            serviceManager={serviceManager}
-                        />
-                    </NotificationContext.Provider>
-                </Provider>
-            </ServiceManagerContext.Provider>
-        </ThemeContext.Provider>
+        <ServiceManagerContext.Provider value={serviceManager}>
+            <Provider store={store}>
+                <NotificationContext.Provider value={emitter}>
+                    <MUIThemeProvider theme={theme}>
+                        <ThemeProvider theme={theme}>
+                            <ApplicationUI
+                                history={history}
+                                serviceManager={serviceManager}
+                            />
+                        </ThemeProvider>
+                    </MUIThemeProvider>
+                </NotificationContext.Provider>
+            </Provider>
+        </ServiceManagerContext.Provider>
     );
 };

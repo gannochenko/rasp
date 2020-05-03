@@ -1,13 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { VerticalTriplet } from '@gannochenko/ui';
 
-import { Top, Footer, Logo, Header, Title, Central } from './style';
+import { Top, Footer, Logo, Central } from './style';
 import { LayoutProperties } from './type';
 
-export const Layout: FunctionComponent<LayoutProperties> = ({
-    children,
-    title = 'Untitled page',
-}) => (
+export const Layout: FunctionComponent<LayoutProperties> = ({ children }) => (
     <VerticalTriplet
         top={
             <Top>
@@ -24,11 +21,6 @@ export const Layout: FunctionComponent<LayoutProperties> = ({
             </Footer>
         }
     >
-        <Central>
-            <Header>
-                <Title>{title}</Title>
-            </Header>
-            {children}
-        </Central>
+        {children}
     </VerticalTriplet>
 );
