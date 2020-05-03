@@ -29,6 +29,7 @@ export const withClient = <
 };
 
 export class ServiceManager {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     public getService(name: string) {
         return null;
     }

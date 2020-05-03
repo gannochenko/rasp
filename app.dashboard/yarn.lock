@@ -933,16 +933,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bucket-of-bolts/styled-companion@^1.0.15":
-  version "1.0.15"
-  resolved "https://registry.yarnpkg.com/@bucket-of-bolts/styled-companion/-/styled-companion-1.0.15.tgz#11bd4898f4881ae5c9db68e0c7d5050775ee6854"
-  integrity sha512-L3j8612ujwVUZXXZybUHdY+of0Vs5ycAFdXKQ0/apQxMz9NOBnqxapjTer0L4SThptArnbXTMTliYNh1fiIjQA==
-
-"@bucket-of-bolts/ui@^1.0.20":
-  version "1.0.20"
-  resolved "https://registry.yarnpkg.com/@bucket-of-bolts/ui/-/ui-1.0.20.tgz#e6963d372dff1952fffe34d68611f418dd3e7ee1"
-  integrity sha512-gEYUQuFQw7VfSIWLkjldzP1mRRG76BmTbP0PJvdbEK7yQ95CFzpjseHUpM9GpcjkHmINq9/8pEj7hBvTaBq5iA==
-
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
