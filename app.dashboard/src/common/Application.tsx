@@ -5,13 +5,7 @@ import { NotificationContext } from '@gannochenko/ui';
 
 import { ApplicationUI } from './components';
 import { ThemeContext, theme } from './style';
-import {
-    Settings,
-    Client,
-    ClientContext,
-    createHistory,
-    dismissOnReady,
-} from './lib';
+import { Client, ClientContext, createHistory, dismissOnReady } from './lib';
 import { createStore } from './store';
 
 const history = createHistory();
@@ -20,8 +14,7 @@ const { store, saga, unsubscribe } = createStore({
     history,
     onChange: dismissOnReady,
 });
-const settings = new Settings();
-const client = new Client(settings);
+const client = new Client();
 const emitter = new EventEmitter();
 
 export const Application: FunctionComponent = () => {

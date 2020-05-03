@@ -6,7 +6,6 @@ import { HttpLink } from 'apollo-link-http';
 import { ApolloLink } from 'apollo-link';
 import { onError } from 'apollo-link-error';
 
-import { Settings } from './settings';
 // import { createUploadLink } from 'apolloClientInstance-upload-link';
 // import { RetryLink } from 'apolloClientInstance-link-retry';
 import { Nullable, ObjectLiteral } from '../../type';
@@ -34,14 +33,11 @@ export const withClient = <L extends { client: NullableClient }>(
 };
 
 export class Client {
-    protected settings: Settings;
     protected url = '';
 
     protected apolloClientInstance?: ApolloClient<unknown>;
 
-    public constructor(settings: Settings) {
-        this.settings = settings;
-    }
+    public constructor() {}
 
     public get apollo() {
         return this.makeApollo();
@@ -90,13 +86,13 @@ export class Client {
 
     public getUrl() {
         if (!this.url) {
-            this.url = this.settings.getSync('API__URL');
-            if (__DEV__) {
-                this.url = this.url.replace(
-                    'localhost',
-                    document.location.hostname,
-                );
-            }
+            // this.url = this.settings.getSync('API__URL');
+            // if (__DEV__) {
+            //     this.url = this.url.replace(
+            //         'localhost',
+            //         document.location.hostname,
+            //     );
+            // }
         }
 
         return this.url;

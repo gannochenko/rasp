@@ -943,14 +943,6 @@
   resolved "https://registry.yarnpkg.com/@bucket-of-bolts/ui/-/ui-1.0.20.tgz#e6963d372dff1952fffe34d68611f418dd3e7ee1"
   integrity sha512-gEYUQuFQw7VfSIWLkjldzP1mRRG76BmTbP0PJvdbEK7yQ95CFzpjseHUpM9GpcjkHmINq9/8pEj7hBvTaBq5iA==
 
-"@bucket-of-bolts/util@^1.0.16":
-  version "1.0.16"
-  resolved "https://registry.yarnpkg.com/@bucket-of-bolts/util/-/util-1.0.16.tgz#9021a8516715c2f65e802544dc4b8e6694641c55"
-  integrity sha512-ByP3P2hK01abc+Fw7/X/cE8H0f2Xrlt4+iu6k9rNmLQOiILDvvwqZrfiLAD0Jk4xs3WD9CLPt9k5g44ZzFTUwA==
-  dependencies:
-    "@m59/qs" "^2.0.3"
-    naming-style "^1.0.0"
-
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -3937,6 +3929,25 @@ dot-case@^3.0.3:
   dependencies:
     no-case "^3.0.3"
     tslib "^1.10.0"
+
+dotenv-defaults@^1.0.2:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/dotenv-defaults/-/dotenv-defaults-1.1.1.tgz#032c024f4b5906d9990eb06d722dc74cc60ec1bd"
+  integrity sha512-6fPRo9o/3MxKvmRZBD3oNFdxODdhJtIy1zcJeUSCs6HCy4tarUpd+G67UTU9tF6OWXeSPqsm4fPAB+2eY9Rt9Q==
+  dependencies:
+    dotenv "^6.2.0"
+
+dotenv-webpack@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/dotenv-webpack/-/dotenv-webpack-1.7.0.tgz#4384d8c57ee6f405c296278c14a9f9167856d3a1"
+  integrity sha512-wwNtOBW/6gLQSkb8p43y0Wts970A3xtNiG/mpwj9MLUhtPCQG6i+/DSXXoNN7fbPCU/vQ7JjwGmgOeGZSSZnsw==
+  dependencies:
+    dotenv-defaults "^1.0.2"
+
+dotenv@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-6.2.0.tgz#941c0410535d942c8becf28d3f357dbd9d476064"
+  integrity sha512-HygQCKUBSFl8wKQZBSemMywRWcEDNidvNbjGVyZu3nbZ8qq9ubiPoGLMdRDpfSrpkkm9BXYFkpKxxFX38o/76w==
 
 duplexer@^0.1.1:
   version "0.1.1"
@@ -7209,7 +7220,7 @@ mute-stream@0.0.8:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
 
-naming-style@^1.0.0, naming-style@^1.0.1:
+naming-style@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/naming-style/-/naming-style-1.0.1.tgz#2c81f378a9e4d278618c2c8aa5506b0b2a33034d"
   integrity sha512-0TReXPuxU6ebUmDQmfDjkCwvhhJ86Gg02/Pliti1+ClkLKFOYBL6CJn+MEPT3nX35tGpyaUl+IwFGmh562TvKA==

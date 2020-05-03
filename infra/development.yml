@@ -1,17 +1,17 @@
-version: '3'
+version: "3"
 services:
   dashboard:
-    image: 'dashboard:dev'
+    image: "dashboard:dev"
     build:
       context: ../app.dashboard/
       dockerfile: infra/development.dockerfile
     ports:
-      - '3010:3010'
-      - '3001:3001'
-      - '3000:3000'
+      - "3010:3010"
+      - "3001:3001"
+      - "3000:3000"
     depends_on: []
     volumes:
-      - '../app.dashboard/:/app/'
+      - "../app.dashboard/:/app/"
     environment:
       - NODE_ENV=development
       - DEBUG_COLORS=1
@@ -21,6 +21,7 @@ services:
       - NETWORK__PORT__BUNDLE_ANALYSER=3010
       - NETWORK__CORS=
       - TEMPLATE__PATH=./index.html
+      - NETWORK__API=http://localhost:4000
     labels:
       com.list.name: Dashboard
-      com.list.link.analyzer: 'Bundle analyzer|http://localhost:3010'
+      com.list.link.analyzer: "Bundle analyzer|http://localhost:3010"

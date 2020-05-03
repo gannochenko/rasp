@@ -34,22 +34,9 @@ export class Template {
                 );
             }
 
-            template = template.replace(
-                '<!--ENV-->',
-                `<script>window.process = {env: ${JSON.stringify(
-                    this.forwardEnv(),
-                )}};</script>`,
-            );
-
             this.template = template;
         }
 
         return this.template;
-    }
-
-    forwardEnv() {
-        return {
-            API__URL: process.env.API__URL || '',
-        };
     }
 }

@@ -3,6 +3,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const StartServerPlugin = require('start-server-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = (env, argv) => {
     const pEnv = process.env;
@@ -15,7 +16,7 @@ module.exports = (env, argv) => {
         entry: [
             development && 'webpack/hot/poll?1000',
             development ? './src/server/index.dev' : './src/server/index',
-        ].filter(x => !!x),
+        ].filter((x) => !!x),
         watch: development,
         target: 'node',
         mode: development ? 'development' : 'production',
@@ -107,7 +108,10 @@ module.exports = (env, argv) => {
                         to: path.join(destinationFolder, 'package.json'),
                     },
                 ]),
-        ].filter(x => !!x),
+            new Dotenv({
+                systemvars: true,
+            }),
+        ].filter((x) => !!x),
         output: {
             path: destinationFolder,
             filename: 'server.js',

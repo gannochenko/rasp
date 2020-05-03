@@ -8,6 +8,7 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInjector = require('html-webpack-injector');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = (env, argv) => {
     const pEnv = process.env;
@@ -178,7 +179,10 @@ module.exports = (env, argv) => {
                     // chunks: ['index']
                 }),
             !development && new HtmlWebpackInjector(),
-        ].filter(x => !!x),
+            new Dotenv({
+                systemvars: true,
+            }),
+        ].filter((x) => !!x),
         devServer: {
             host: '0.0.0.0',
             port: hmrPort,

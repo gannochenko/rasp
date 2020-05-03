@@ -18,14 +18,14 @@ export const app = express();
 // eslint-disable-next-line react-hooks/rules-of-hooks
 useErrorHandler(app);
 
-const host = settings.getSync('NETWORK__HOST', 'localhost');
-const port = process.env.PORT || settings.getSync('NETWORK__PORT', 3000);
+const host = process.env.NETWORK__HOST || 'localhost';
+const port = process.env.PORT || 3000;
 
 app.set('host', host);
 app.set('port', port);
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
-useCORS(app, settings);
+useCORS(app);
 app.use(helmet());
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
