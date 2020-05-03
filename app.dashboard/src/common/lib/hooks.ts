@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { DispatchUnload, DispatchLoad, Dispatch } from '../store/type';
 import { Error, Notify } from '../type';
 import { Nullable } from '../../type';
-import { Client } from './client';
+import { ServiceManager } from './service-manager';
 
 export const useNetworkMonitor = (
     dispatch: Dispatch,
@@ -47,13 +47,13 @@ export const useErrorNotification = (
 
 export const useDispatchLoad = (
     dispatchLoad?: DispatchLoad,
-    client?: Client,
+    serviceManager?: ServiceManager,
 ) => {
     useEffect(() => {
         if (dispatchLoad) {
-            dispatchLoad(client);
+            dispatchLoad(serviceManager);
         }
-    }, [dispatchLoad, client]);
+    }, [dispatchLoad, serviceManager]);
 };
 
 export const useDispatchUnload = (dispatchUnload?: DispatchUnload) => {

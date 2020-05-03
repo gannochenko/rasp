@@ -5,7 +5,12 @@ import { NotificationContext } from '@gannochenko/ui';
 
 import { ApplicationUI } from './components';
 import { ThemeContext, theme } from './style';
-import { Client, ClientContext, createHistory, dismissOnReady } from './lib';
+import {
+    ServiceManager,
+    ServiceManagerContext,
+    createHistory,
+    dismissOnReady,
+} from './lib';
 import { createStore } from './store';
 
 const history = createHistory();
@@ -14,19 +19,22 @@ const { store, saga, unsubscribe } = createStore({
     history,
     onChange: dismissOnReady,
 });
-const client = new Client();
+const serviceManager = new ServiceManager();
 const emitter = new EventEmitter();
 
 export const Application: FunctionComponent = () => {
     return (
         <ThemeContext.Provider value={theme}>
-            <ClientContext.Provider value={client}>
+            <ServiceManagerContext.Provider value={serviceManager}>
                 <Provider store={store}>
                     <NotificationContext.Provider value={emitter}>
-                        <ApplicationUI history={history} client={client} />
+                        <ApplicationUI
+                            history={history}
+                            serviceManager={serviceManager}
+                        />
                     </NotificationContext.Provider>
                 </Provider>
-            </ClientContext.Provider>
+            </ServiceManagerContext.Provider>
         </ThemeContext.Provider>
     );
 };

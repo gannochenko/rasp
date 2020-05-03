@@ -18,11 +18,11 @@ import { ObjectLiteral } from '../../../type';
 const Page2Component: FunctionComponent<Page2PropsType> = ({
     dispatchLoad,
     dispatchUnload,
-    client,
+    serviceManager,
     error,
     notify,
 }) => {
-    useDispatchLoad(dispatchLoad, client);
+    useDispatchLoad(dispatchLoad, serviceManager);
     useDispatchUnload(dispatchUnload);
     useErrorNotification(error, notify);
 

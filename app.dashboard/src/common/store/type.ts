@@ -1,7 +1,7 @@
 import { History } from 'history';
 import { Store } from 'redux';
 import { Error } from '../type';
-import { Client } from '../lib';
+import { ServiceManager } from '../lib';
 import { Nullable, ObjectLiteral } from '../../type';
 
 export type StoreParameters = {
@@ -20,12 +20,12 @@ export type Action<P = ObjectLiteral> = {
     payload: P;
 };
 
-export type LoadAction = Action<Partial<{ client: Client }>>;
+export type LoadAction = Action<Partial<{ serviceManager: ServiceManager }>>;
 
 export type ControllerProperties = {
     ready: boolean;
     offline: boolean;
-    client: Client;
+    serviceManager: ServiceManager;
     error: Nullable<Error[]>;
     dispatch?: (action: Action) => void;
     dispatchLoad?: DispatchLoad;
@@ -35,7 +35,7 @@ export type ControllerProperties = {
 export type Dispatch = (action: Action) => void;
 
 export type DispatchLoad = (
-    client?: Client,
+    serviceManager?: ServiceManager,
     parameters?: ObjectLiteral,
 ) => void;
 

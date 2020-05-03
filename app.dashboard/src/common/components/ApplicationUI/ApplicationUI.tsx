@@ -31,7 +31,7 @@ import { PageProgress } from '../PageProgress';
 
 const ApplicationUIComponent: FunctionComponent<ApplicationProperties> = ({
     ready = false,
-    client,
+    serviceManager,
     history,
     error = null,
     notify = () => {},
@@ -41,8 +41,8 @@ const ApplicationUIComponent: FunctionComponent<ApplicationProperties> = ({
     dispatchLoad = () => {},
 }) => {
     useEffect(() => {
-        dispatchLoad(client);
-    }, [client, dispatchLoad]);
+        dispatchLoad(serviceManager);
+    }, [serviceManager, dispatchLoad]);
 
     useNetworkMonitor(dispatch, SHOW_ONLINE, SHOW_OFFLINE);
     useErrorNotification(error, notify);

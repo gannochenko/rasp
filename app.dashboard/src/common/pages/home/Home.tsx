@@ -21,11 +21,11 @@ import { ObjectLiteral } from '../../../type';
 const HomePageComponent: FunctionComponent<HomePagePropsType> = ({
     dispatchLoad,
     dispatchUnload,
-    client,
+    serviceManager,
     error,
     notify,
 }) => {
-    useDispatchLoad(dispatchLoad, client);
+    useDispatchLoad(dispatchLoad, serviceManager);
     useDispatchUnload(dispatchUnload);
     useErrorNotification(error, notify);
 

@@ -5,7 +5,7 @@ import { Nullable } from '../../../type';
 
 export type ApplicationPropertiesAlt = {
     history: History<any>;
-    client: any;
+    serviceManager: any;
 };
 
 export type ApplicationProperties = ApplicationPropertiesAlt &
