@@ -6,13 +6,10 @@ import { useErrorHandler } from './error-handler';
 
 import { useCORS } from './cors';
 import { useMetrics } from './metrics';
-import { Settings } from './settings';
 import { Template } from './template';
 
 // import { renderToString } from 'react-dom/server';
 // import Application from "../common/Application";
-
-const settings = new Settings();
 
 export const app = express();
 // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -37,7 +34,7 @@ app.get('/health', (req, res) => {
     res.send('1');
 });
 
-const template = new Template(settings);
+const template = new Template();
 
 // todo: use renderer here
 app.get('*', async (req, res) => {

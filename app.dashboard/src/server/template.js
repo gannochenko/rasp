@@ -2,15 +2,11 @@ import fs from 'fs';
 import util from 'util';
 
 export class Template {
-    constructor(settings) {
-        this.settings = settings;
-        this.portHMR = __DEV__
-            ? settings.getSync('NETWORK__PORT__HMR', 3001)
-            : 0;
-        this.templatePath = settings.getSync(
-            'TEMPLATE__PATH',
-            __DEV__ ? './index.html' : './public/index.html',
-        );
+    constructor() {
+        this.portHMR = __DEV__ ? process.env.NETWORK__PORT__HMR || 3001 : 0;
+        this.templatePath =
+            process.env.TEMPLATE__PATH ||
+            (__DEV__ ? './index.html' : './public/index.html');
     }
 
     readFile = util.promisify(fs.readFile);
