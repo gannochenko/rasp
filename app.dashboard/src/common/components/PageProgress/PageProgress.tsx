@@ -3,21 +3,21 @@ import { connect } from 'react-redux';
 import { PageLoadProgress } from '@gannochenko/ui';
 
 import { PageProgressPropsType } from './type';
+import { Container, Bar } from './style';
 import { ObjectLiteral } from '../../../type';
 
-export const PageProgress: FunctionComponent<PageProgressPropsType> = (
-    props,
-) => (
-    <ProgressObserver {...props} observeGlobalLock>
-        {(propss) => {
-            console.log('11');
-            console.log(propss);
-
-            return <div>111</div>;
-        }}
-    </ProgressObserver>
+export const PageProgressComponent: FunctionComponent<PageProgressPropsType> = ({
+    state,
+}) => (
+    <PageLoadProgress state={state} observeGlobalLock>
+        {({ progress, shown, fading }) => (
+            <Container>
+                {shown && <Bar progress={progress} fading={fading} />}
+            </Container>
+        )}
+    </PageLoadProgress>
 );
 
-export const ProgressObserver = connect((state: ObjectLiteral) => ({ state }))(
-    PageLoadProgress,
+export const PageProgress = connect((state: ObjectLiteral) => ({ state }))(
+    PageProgressComponent,
 );
