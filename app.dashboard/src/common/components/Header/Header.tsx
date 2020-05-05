@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 
-import { HeaderRoot, HeaderBar } from './style';
+import { HeaderRoot, HeaderBar, HeaderContainer, Left, Right } from './style';
 import { HeaderPropsType } from './type';
-import { Container } from '../Container';
+import { Menu } from '../Menu';
 
 export const Header: FunctionComponent<HeaderPropsType> = ({
     children,
@@ -11,7 +11,12 @@ export const Header: FunctionComponent<HeaderPropsType> = ({
     return (
         <HeaderRoot {...restProps}>
             <HeaderBar>
-                <Container>Hello there, children!</Container>
+                <HeaderContainer>
+                    <Left>Hello there, children!</Left>
+                    <Right>
+                        <Menu />
+                    </Right>
+                </HeaderContainer>
             </HeaderBar>
         </HeaderRoot>
     );
