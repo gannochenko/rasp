@@ -14,6 +14,7 @@ import { Layout } from '../../components';
 import { Page2PropsType, Page2PropsAlt } from './type';
 import { mapDispatchToProps } from './dispatch';
 import { ObjectLiteral } from '../../../type';
+import { SEO } from '../../components/SEO';
 
 const Page2Component: FunctionComponent<Page2PropsType> = ({
     dispatchLoad,
@@ -28,6 +29,7 @@ const Page2Component: FunctionComponent<Page2PropsType> = ({
 
     return (
         <>
+            <SEO title="Page 2" />
             <Link to="/">Root</Link>
         </>
     );

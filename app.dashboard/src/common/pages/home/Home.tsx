@@ -15,6 +15,7 @@ import { Layout } from '../../components';
 import { HomePagePropsType, HomePagePropsAlt } from './type';
 import { mapDispatchToProps } from './dispatch';
 import { ObjectLiteral } from '../../../type';
+import { SEO } from '../../components/SEO';
 
 const HomePageComponent: FunctionComponent<HomePagePropsType> = ({
     dispatchLoad,
@@ -29,6 +30,7 @@ const HomePageComponent: FunctionComponent<HomePagePropsType> = ({
 
     return (
         <>
+            <SEO title="Home" />
             <Link to="/page2">Page 2</Link>
             <Button
                 variant="contained"
