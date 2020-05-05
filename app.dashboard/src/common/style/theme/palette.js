@@ -46,10 +46,12 @@ export default {
         primary: colors.blueGrey[900],
         secondary: colors.blueGrey[600],
         link: colors.blue[600],
+        contrast: white,
     },
     background: {
         default: '#F4F6F8',
         paper: white,
+        dark: '#20232a',
     },
     icon: colors.blueGrey[600],
     divider: colors.grey[200],
