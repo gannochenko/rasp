@@ -2,13 +2,19 @@ import React from 'react';
 import { RendererType } from '@gannochenko/ui';
 
 import { Layout } from '../../components';
+import { SEO } from '../../components/SEO';
 
 export const ForbiddenPage = () => {
-    return <span>Access forbidden</span>;
+    return (
+        <>
+            <SEO title="403 &mdash; Forbidden" />
+            <span>Forbidden</span>
+        </>
+    );
 };
 
 export const ForbiddenPageRenderer: RendererType = () => (
-    <Layout title="403">
+    <Layout>
         <ForbiddenPage />
     </Layout>
 );
