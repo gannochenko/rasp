@@ -47,7 +47,7 @@ export const Page2 = withNotification<Page2PropsAlt>(
 );
 
 export const Page2Renderer: RendererType = () => (
-    <Layout title="Page 2">
+    <Layout>
         <Page2 />
     </Layout>
 );

@@ -39,7 +39,7 @@ const HomePageComponent: FunctionComponent<HomePagePropsType> = ({
                     variant="contained"
                     color="primary"
                     onClick={() => {
-                        notify({ text: 'MESSAGE!', lifeTime: 1000 });
+                        notify({ text: 'MESSAGE!', lifeTime: 3000 });
                     }}
                 >
                     Test
@@ -134,7 +134,7 @@ export const HomePage = withNotification<HomePagePropsAlt>(
 );
 
 export const HomePageRenderer: RendererType = () => (
-    <Layout>
+    <Layout topPadding>
         <HomePage />
     </Layout>
 );
