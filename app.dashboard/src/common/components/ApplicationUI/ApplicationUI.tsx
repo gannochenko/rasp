@@ -24,6 +24,7 @@ import {
     NotFoundPageRenderer,
     ForbiddenPageRenderer,
     Page2Renderer,
+    CookiePolicyRenderer,
 } from '../../pages';
 import { ObjectLiteral } from '../../../type';
 import { NotificationUI } from '../NotificationUI';
@@ -60,6 +61,11 @@ const ApplicationUIComponent: FunctionComponent<ApplicationProperties> = ({
                     <Switch>
                         <Route exact path="/" renderer={HomePageRenderer} />
                         <Route exact path="/page2" renderer={Page2Renderer} />
+                        <Route
+                            exact
+                            path="/cookie-policy"
+                            renderer={CookiePolicyRenderer}
+                        />
                         <Route path="/403" renderer={ForbiddenPageRenderer} />
                         <Route renderer={NotFoundPageRenderer} />
                     </Switch>

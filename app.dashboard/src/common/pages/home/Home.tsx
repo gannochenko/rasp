@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
 import { RendererType, withNotification } from '@gannochenko/ui';
-import { Link } from 'react-router-dom';
 import {
     useErrorNotification,
     useDispatchUnload,
@@ -10,7 +9,7 @@ import {
     useDispatchLoad,
 } from '../../lib';
 
-import { Container, Layout } from '../../components';
+import { Container, Layout, Link } from '../../components';
 
 import { HomePagePropsType, HomePagePropsAlt } from './type';
 import { mapDispatchToProps } from './dispatch';
