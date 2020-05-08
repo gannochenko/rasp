@@ -11,7 +11,7 @@ export const Layout: FunctionComponent<LayoutProperties> = ({
     topPadding,
     bottomPadding,
 }) => (
-    <TripleVerticalLayout top={<Header />} bottom={<Footer />}>
+    <TripleVerticalLayout header={<Header />} footer={<Footer />}>
         <CentralContainer topPadding={topPadding} bottomPadding={bottomPadding}>
             {children}
         </CentralContainer>

@@ -977,9 +977,9 @@
     naming-style "^1.0.1"
 
 "@gannochenko/ui@^1.0.2":
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@gannochenko/ui/-/ui-1.0.12.tgz#30cbddc0203b5801ee722c903155f4543b900654"
-  integrity sha512-wWS+UNW2bTxa9tnGwvXOWb7/1cEcw3jllHs+dtZHnKtgizrgZaQ+9Rl0Pl47tMPvh731PGQVpVVF3QDhwGkWTA==
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@gannochenko/ui/-/ui-1.0.13.tgz#59657b03878e2d34974876316b4c01c858f64b99"
+  integrity sha512-mLO67Y8rHrrDmRen83idu1zFbmC/SNHL9bkEj/TH0BWtTG+oiftsNw54+AQCNkVg+YwCYVhLVlFRegfjitjSVA==
   dependencies:
     events ">=3.1.0"
     throttle-debounce "^2.1.0"

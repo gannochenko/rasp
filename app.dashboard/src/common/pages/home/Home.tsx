@@ -39,7 +39,7 @@ const HomePageComponent: FunctionComponent<HomePagePropsType> = ({
                     variant="contained"
                     color="primary"
                     onClick={() => {
-                        notify({ text: 'MESSAGE!', lifeTime: 3000 });
+                        notify({ text: 'MESSAGE!' });
                     }}
                 >
                     Test
