@@ -1,6 +1,13 @@
 import React, { FunctionComponent } from 'react';
 
-import { HeaderRoot, HeaderBar, HeaderContainer, Left, Right } from './style';
+import {
+    HeaderRoot,
+    HeaderBar,
+    HeaderContainer,
+    Left,
+    Right,
+    Logo,
+} from './style';
 import { HeaderPropsType } from './type';
 import { Menu } from '../Menu';
 
@@ -12,7 +19,9 @@ export const Header: FunctionComponent<HeaderPropsType> = ({
         <HeaderRoot {...restProps}>
             <HeaderBar>
                 <HeaderContainer>
-                    <Left>Hello there, children!</Left>
+                    <Left>
+                        <Logo to="/">Rasp Dashboard</Logo>
+                    </Left>
                     <Right>
                         <Menu />
                     </Right>

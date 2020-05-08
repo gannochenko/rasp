@@ -969,9 +969,9 @@
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
 "@gannochenko/etc@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@gannochenko/etc/-/etc-1.0.2.tgz#f7b9523be6fe3a196f7bfa52ad43d7979f437079"
-  integrity sha512-vSan6J8BWh7P9YUQA/5UpEB1O9kRAXS2YsYO9OYsjIGVwWVpZDZAWWx9Oe61wqbdmkWkrsqr8GklqZScOP4RFw==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@gannochenko/etc/-/etc-1.0.3.tgz#2319a179290b3ee6edab4a21b4e8847e092995fc"
+  integrity sha512-OafiwRUMhQUvfGwTf7zzZDM/Ql45rmQlOARuuDYCXDXfA9vGXq4XMsy0/1EKi0lGAS9biuUOlyZShUc6flq5og==
   dependencies:
     "@m59/qs" "^2.0.3"
     naming-style "^1.0.1"

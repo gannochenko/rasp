@@ -11,7 +11,7 @@ export const Footer: FunctionComponent<FooterPropsType> = ({
     return (
         <FooterRoot {...restProps}>
             <Container contentAlign="center">
-                &copy; 2020 &mdash; current &laquo;Dashboard&raquo; team
+                &copy; 2020 &mdash; current &laquo;Rasp Dashboard&raquo; team
             </Container>
         </FooterRoot>
     );

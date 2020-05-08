@@ -6,7 +6,7 @@ import {
     Item,
     Hamburger,
     Bar,
-    Right,
+    Main,
     MobileItems,
     MobileItem,
 } from './style';
@@ -24,36 +24,20 @@ export const Menu: FunctionComponent<Props> = () => {
 
     return (
         <MenuRoot>
-            <Right>
+            <Main>
                 <Items>
-                    <Item to="/blog">Blog</Item>
-                    {/*<Item to="/projects">Projects</Item>*/}
-                    <Item to="/techradar">Techradar</Item>
-                    {/*<Item to="/story">Story</Item>*/}
-                    {/*<Item to="/contact">Contact</Item>*/}
+                    <Item to="/page2">Page 2</Item>
                 </Items>
                 <Hamburger onClick={onHamburgerClick}>
                     <Bar />
                     <Bar />
                     <Bar />
                 </Hamburger>
-            </Right>
+            </Main>
             <MobileItems open={mobileMenuOpen}>
-                <MobileItem to="/blog" onClick={onMobileItemClick}>
-                    Blog
+                <MobileItem to="/page2" onClick={onMobileItemClick}>
+                    Page 2
                 </MobileItem>
-                {/*<MobileItem to="/projects" onClick={onMobileItemClick}>*/}
-                {/*    Projects*/}
-                {/*</MobileItem>*/}
-                <MobileItem to="/techradar" onClick={onMobileItemClick}>
-                    Techradar
-                </MobileItem>
-                {/*<MobileItem to="/story" onClick={onMobileItemClick}>*/}
-                {/*    Story*/}
-                {/*</MobileItem>*/}
-                {/*<MobileItem to="/contact" onClick={onMobileItemClick}>*/}
-                {/*    Contact*/}
-                {/*</MobileItem>*/}
             </MobileItems>
         </MenuRoot>
     );

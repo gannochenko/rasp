@@ -1,31 +1,30 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { align, gap, foregroundColor } from '@gannochenko/etc';
 import { Link } from 'react-router-dom';
 
-export const MenuRoot = styled.div``;
+export const MenuRoot = styled.div`
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+`;
 
 export const Items = styled.nav`
-    ${gap(null, '1rem')}
-    ${align('center', 'right')}
+    ${gap(null, '1rem')};
+    ${align('center', 'right')};
     ${({ theme }) => ({
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('xs')]: {
             display: 'none',
         },
     })}
 `;
 
 export const Item = styled(Link)`
-    ${(props) =>
-        foregroundColor(
-            props.theme.palette.link.altNormal,
-            props.theme.palette.link.altNormal,
-        )};
     text-transform: uppercase;
     text-decoration: none;
     position: relative;
     padding-bottom: 3px;
-    font-size: ${(props) => props.theme.font.small};
     font-weight: bold;
+    ${({ theme }) => foregroundColor(theme.palette.white, theme.palette.white)};
 
     &:after {
         content: '';
@@ -35,7 +34,7 @@ export const Item = styled(Link)`
         bottom: 0;
         left: 0;
         width: 0;
-        background-color: white;
+        background-color: ${(props) => props.theme.palette.white};
         transition: width ease 200ms;
     }
 
@@ -46,17 +45,19 @@ export const Item = styled(Link)`
     }
 `;
 
-export const Right = styled.div`
+export const Main = styled.div`
     ${align('center', 'center')};
     flex-shrink: 0;
     position: relative;
+    display: flex;
+    align-items: center;
 `;
 
 export const Hamburger = styled.div`
     ${align('center', 'center', 'column')};
     width: 2.5rem;
     height: 2.5rem;
-    ${gap('0.2rem', null)};
+    ${gap('0.3rem', null)};
     padding: 0.5rem;
     cursor: pointer;
     ${({ theme }) => ({
@@ -67,14 +68,14 @@ export const Hamburger = styled.div`
 `;
 
 export const Bar = styled.div`
-    background-color: ${(props) => props.theme.palette.backgroundPrimary};
-    height: 10px;
+    background-color: ${(props) => props.theme.palette.white};
+    height: 5px;
     width: 100%;
     display: block;
 `;
 
 export const MobileItems = styled.nav<{ open: boolean }>`
-    background-color: white;
+    background-color: ${(props) => props.theme.palette.white};
     position: absolute;
     top: 100%;
     right: ${(props) => (props.open ? '0' : '-100%')};
@@ -82,6 +83,12 @@ export const MobileItems = styled.nav<{ open: boolean }>`
     height: 100vh;
     overflow: hidden;
     transition: right ease 200ms;
+    z-index: ${({ theme }) => theme.zIndex.appBar};
+    ${({ theme }) => ({
+        [theme.breakpoints.up('sm')]: {
+            display: 'none',
+        },
+    })}
 `;
 
 export const MobileItem = styled(Link)`
@@ -89,12 +96,8 @@ export const MobileItem = styled(Link)`
     position: relative;
     display: block;
     text-decoration: none;
-    ${(props) =>
-        foregroundColor(
-            props.theme.color.textPrimary,
-            props.theme.color.textPrimary,
-        )};
-    border-bottom: 1px solid ${(props) => props.theme.color.backgroundSecondary};
+    color: ${(props) => props.theme.palette.main};
+    border-bottom: 1px solid ${(props) => props.theme.palette.main};
 
     &:before {
         content: '';
@@ -104,7 +107,7 @@ export const MobileItem = styled(Link)`
         top: 0;
         left: 0;
         bottom: 0;
-        background-color: ${(props) => props.theme.color.link.normal};
+        background-color: ${(props) => props.theme.palette.main};
         transition: width 200ms ease;
     }
 
