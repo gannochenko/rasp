@@ -33,6 +33,8 @@ const HomePageComponent: FunctionComponent<HomePagePropsType> = ({
             <SEO title="Home" />
             <Container>
                 <Link to="/page2">Page 2</Link>
+                <br />
+                <br />
                 <Button
                     variant="contained"
                     color="primary"

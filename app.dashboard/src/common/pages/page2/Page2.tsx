@@ -9,7 +9,7 @@ import {
     useDispatchLoad,
 } from '../../lib';
 
-import { Layout } from '../../components';
+import { Container, Layout } from '../../components';
 
 import { Page2PropsType, Page2PropsAlt } from './type';
 import { mapDispatchToProps } from './dispatch';
@@ -30,7 +30,9 @@ const Page2Component: FunctionComponent<Page2PropsType> = ({
     return (
         <>
             <SEO title="Page 2" />
-            <Link to="/">Root</Link>
+            <Container>
+                <Link to="/">Home</Link>
+            </Container>
         </>
     );
 };
