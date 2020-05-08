@@ -34,6 +34,8 @@ const HomePageComponent: FunctionComponent<HomePagePropsType> = ({
             <Container>
                 <Link to="/page2">Page 2</Link>
                 <br />
+                <Link to="/missing-page">Missing page</Link>
+                <br />
                 <br />
                 <Button
                     variant="contained"

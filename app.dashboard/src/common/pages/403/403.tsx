@@ -1,14 +1,16 @@
 import React from 'react';
 import { RendererType } from '@gannochenko/ui';
 
-import { Layout } from '../../components';
+import { Container, Layout } from '../../components';
 import { SEO } from '../../components/SEO';
 
 export const ForbiddenPage = () => {
     return (
         <>
             <SEO title="403 &mdash; Forbidden" />
-            <span>Forbidden</span>
+            <Container>
+                <span>Forbidden</span>
+            </Container>
         </>
     );
 };
