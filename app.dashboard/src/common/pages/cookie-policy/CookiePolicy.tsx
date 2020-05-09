@@ -39,7 +39,7 @@ const CookiePolicyPageComponent: FunctionComponent<CookiePolicyPagePropsType> = 
                 what information they gather, how I use it and why I sometimes
                 need to store these cookies. I will also share how you can
                 prevent these cookies from being stored however this may
-                downgrade or 'break' certain elements of the sites
+                downgrade or &apos;break&apos; certain elements of the sites
                 functionality. For more general information on cookies, please
                 read{' '}
                 <Link href="https://www.cookieconsent.com/what-are-cookies/">
@@ -61,27 +61,38 @@ const CookiePolicyPageComponent: FunctionComponent<CookiePolicyPagePropsType> = 
                 features of the this site. Therefore it is recommended that you
                 do not disable cookies.
                 <h2>The Cookies I Set</h2>
-                - Site preferences cookies.
-                <br />
-                In order to provide you with a great experience on this site I
-                provide the functionality to set your preferences for how this
-                site runs when you use it. In order to remember your preferences
-                I need to set cookies so that this information can be called
-                whenever you interact with a page is affected by your
-                preferences. ## Third Party Cookies In some special cases I also
-                use cookies provided by trusted third parties. The following
-                section details which third party cookies you might encounter
-                through this site. - This site uses Google Analytics which is
-                one of the most widespread and trusted analytics solution on the
-                web for helping us to understand how you use the site and ways
-                that I can improve your experience. These cookies may track
-                things such as how long you spend on the site and the pages that
-                you visit so I can continue to produce engaging content. All
-                statistics I gather with Google Analytics is completely
-                anonymous.
-                <br />
-                For more information on Google Analytics cookies, see the
-                official Google Analytics page.
+                <ul>
+                    <li>
+                        Site preferences cookies.
+                        <p>
+                            In order to provide you with a great experience on
+                            this site I provide the functionality to set your
+                            preferences for how this site runs when you use it.
+                            In order to remember your preferences I need to set
+                            cookies so that this information can be called
+                            whenever you interact with a page is affected by
+                            your preferences.
+                        </p>
+                    </li>
+                </ul>
+                <h2>Third Party Cookies</h2>
+                <p>
+                    In some special cases I also use cookies provided by trusted
+                    third parties. The following section details which third
+                    party cookies you might encounter through this site. - This
+                    site uses Google Analytics which is one of the most
+                    widespread and trusted analytics solution on the web for
+                    helping us to understand how you use the site and ways that
+                    I can improve your experience. These cookies may track
+                    things such as how long you spend on the site and the pages
+                    that you visit so I can continue to produce engaging
+                    content. All statistics I gather with Google Analytics is
+                    completely anonymous.
+                </p>
+                <p>
+                    For more information on Google Analytics cookies, see the
+                    official Google Analytics page.
+                </p>
                 <h2>More Information</h2>
                 <p>
                     Hopefully that has clarified things for you and as was
