@@ -2,13 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
 import { RendererType, withNotification } from '@gannochenko/ui';
-import {
-    useErrorNotification,
-    useDispatchUnload,
-    withClient,
-    useDispatchLoad,
-    useScrollTop,
-} from '../../lib';
+import { withClient, usePage } from '../../lib';
 
 import { Container, Layout, Link } from '../../components';
 
@@ -17,17 +11,9 @@ import { mapDispatchToProps } from './dispatch';
 import { ObjectLiteral } from '../../../type';
 import { SEO } from '../../components/SEO';
 
-const HomePageComponent: FunctionComponent<HomePagePropsType> = ({
-    dispatchLoad,
-    dispatchUnload,
-    serviceManager,
-    error,
-    notify,
-}) => {
-    useDispatchLoad(dispatchLoad, serviceManager);
-    useDispatchUnload(dispatchUnload);
-    useErrorNotification(error, notify);
-    useScrollTop();
+const HomePageComponent: FunctionComponent<HomePagePropsType> = (props) => {
+    const { notify } = props;
+    usePage(props);
 
     return (
         <>

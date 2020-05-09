@@ -5,6 +5,7 @@ import { CentralContainer } from './style';
 import { LayoutProperties } from './type';
 import { Footer } from '../Footer';
 import { Header } from '../Header';
+import { CookiePopup } from '../CookiePopup';
 
 export const Layout: FunctionComponent<LayoutProperties> = ({
     children,
@@ -15,6 +16,7 @@ export const Layout: FunctionComponent<LayoutProperties> = ({
         <CentralContainer topPadding={topPadding} bottomPadding={bottomPadding}>
             {children}
         </CentralContainer>
+        <CookiePopup />
     </TripleVerticalLayout>
 );
 

@@ -1,13 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import { RendererType, withNotification } from '@gannochenko/ui';
-import {
-    useErrorNotification,
-    useDispatchUnload,
-    withClient,
-    useDispatchLoad,
-    useScrollTop,
-} from '../../lib';
+import { withClient, usePage } from '../../lib';
 
 import { Container, Layout, Link } from '../../components';
 
@@ -16,17 +10,10 @@ import { mapDispatchToProps } from './dispatch';
 import { ObjectLiteral } from '../../../type';
 import { SEO } from '../../components/SEO';
 
-const CookiePolicyPageComponent: FunctionComponent<CookiePolicyPagePropsType> = ({
-    dispatchLoad,
-    dispatchUnload,
-    serviceManager,
-    error,
-    notify,
-}) => {
-    useDispatchLoad(dispatchLoad, serviceManager);
-    useDispatchUnload(dispatchUnload);
-    useErrorNotification(error, notify);
-    useScrollTop();
+const CookiePolicyPageComponent: FunctionComponent<CookiePolicyPagePropsType> = (
+    props,
+) => {
+    usePage(props);
 
     return (
         <>

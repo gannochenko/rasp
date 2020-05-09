@@ -6,6 +6,7 @@ export const Container = styled.div`
     left: 0;
     right: 0;
     background-color: transparent;
+    z-index: ${({ theme }) => theme.zIndex.drawer};
 `;
 
 export const Bar = styled.div<{ progress: number; fading: boolean }>`

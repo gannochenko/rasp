@@ -1,8 +1,14 @@
 import { useEffect } from 'react';
-import { DispatchUnload, DispatchLoad, Dispatch } from '../store/type';
+import {
+    DispatchUnload,
+    DispatchLoad,
+    Dispatch,
+    ControllerProperties,
+} from '../store/type';
 import { Error, Notify } from '../type';
 import { Nullable } from '../../type';
 import { ServiceManager } from './service-manager';
+import { NotificationContextPropsType } from '@gannochenko/ui';
 
 export const useNetworkMonitor = (
     dispatch: Dispatch,
@@ -74,7 +80,7 @@ export const useNetworkNotification = (
     useEffect(() => {
         if (offline === true) {
             notify({
-                text: 'We are trying to fix the connection',
+                text: 'We are offline :(',
                 icon: 'cloud_off',
                 code: 'connection_error',
                 closeable: false,
@@ -95,3 +101,16 @@ export const useScrollTop = () =>
     useEffect(() => {
         window.scrollTo({ top: 0 });
     }, []);
+
+export const usePage = ({
+    dispatchLoad,
+    dispatchUnload,
+    serviceManager,
+    notify,
+    error,
+}: ControllerProperties & NotificationContextPropsType) => {
+    useDispatchLoad(dispatchLoad, serviceManager);
+    useDispatchUnload(dispatchUnload);
+    useErrorNotification(error, notify);
+    useScrollTop();
+};
