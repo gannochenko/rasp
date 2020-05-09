@@ -7,19 +7,14 @@ type PropLinks = {
     to?: string;
     href?: string;
     fontSize?: string;
-    bright?: boolean;
+    inverse?: boolean;
     theme?: any;
+    underline?: string;
 };
 
-const fgColors = ({ bright, theme }: PropLinks) => {
-    if (bright) {
-        return css`
-            color: white;
-            text-decoration: none;
-            &:hover {
-                text-decoration: underline;
-            }
-        `;
+const fgColors = ({ inverse, theme }: PropLinks) => {
+    if (inverse) {
+        return foregroundColor(theme.palette.white, theme.palette.white);
     }
 
     return foregroundColor(
@@ -29,16 +24,32 @@ const fgColors = ({ bright, theme }: PropLinks) => {
     );
 };
 
+const getLinkStyle = ({
+    theme,
+    underline,
+    fontSize,
+    inverse,
+}: PropLinks) => css`
+    ${
+        underline === 'hover'
+            ? css`
+                  text-decoration: none;
+                  &:hover {
+                      text-decoration: underline;
+                  }
+              `
+            : ''
+    }
+    font-size: ${fontSize ? theme.typography.fontSize[fontSize] : 'inherit'};
+    ${fgColors({ theme, inverse })};
+`;
+
 export const RouterLinkStyled = styled(RouterLink)<PropLinks>`
-    ${(props) => fgColors(props)};
-    font-size: ${({ theme, fontSize }) =>
-        fontSize ? theme.typography.fontSize[fontSize] : 'inherit'};
+    ${getLinkStyle}
 `;
 
 export const LinkStyled = styled.a<PropLinks>`
-    ${(props) => fgColors(props)};
-    font-size: ${({ theme, fontSize }) =>
-        fontSize ? theme.typography.fontSize[fontSize] : 'inherit'};
+    ${getLinkStyle}
 `;
 
 export const Link: FunctionComponent<PropLinks> = (props) => {

@@ -5,7 +5,8 @@ export const getContentAlignment = ({ contentAlign }: Props) => {
     if (contentAlign === 'center') {
         return `
             display: flex;
-            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         `;
     }
 

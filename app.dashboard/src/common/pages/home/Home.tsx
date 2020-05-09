@@ -43,7 +43,7 @@ const HomePageComponent: FunctionComponent<HomePagePropsType> = ({
                         notify({ text: 'MESSAGE!' });
                     }}
                 >
-                    Test
+                    Test message
                 </Button>
             </Container>
 
