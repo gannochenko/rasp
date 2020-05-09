@@ -23,6 +23,8 @@ const HomePageComponent: FunctionComponent<HomePagePropsType> = (props) => {
                 <br />
                 <Link to="/missing-page">Missing page</Link>
                 <br />
+                <Link to="/403">Forbidden page</Link>
+                <br />
                 <br />
                 <Button
                     variant="contained"

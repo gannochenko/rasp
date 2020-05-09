@@ -7,3 +7,5 @@ export * from './Footer';
 export * from './Header';
 export * from './Link';
 export * from './NotificationUI';
+export * from './Copyright';
+export * from './ErrorPage';
