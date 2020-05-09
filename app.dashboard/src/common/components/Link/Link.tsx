@@ -23,22 +23,22 @@ const fgColors = ({ bright, theme }: PropLinks) => {
     }
 
     return foregroundColor(
-        theme.color.link.normal,
-        theme.color.link.hover,
-        theme.link.hoverEffectDuration,
+        theme.palette.primary.main,
+        theme.palette.primary.dark,
+        '200ms',
     );
 };
 
 export const RouterLinkStyled = styled(RouterLink)<PropLinks>`
     ${(props) => fgColors(props)};
     font-size: ${({ theme, fontSize }) =>
-        fontSize ? theme.font[fontSize] : 'inherit'};
+        fontSize ? theme.typography.fontSize[fontSize] : 'inherit'};
 `;
 
 export const LinkStyled = styled.a<PropLinks>`
     ${(props) => fgColors(props)};
     font-size: ${({ theme, fontSize }) =>
-        fontSize ? theme.font[fontSize] : 'inherit'};
+        fontSize ? theme.typography.fontSize[fontSize] : 'inherit'};
 `;
 
 export const Link: FunctionComponent<PropLinks> = (props) => {

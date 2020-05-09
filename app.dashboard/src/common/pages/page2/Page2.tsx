@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import { RendererType, withNotification } from '@gannochenko/ui';
-import { Link } from 'react-router-dom';
 import {
     useErrorNotification,
     useDispatchUnload,
@@ -9,7 +8,7 @@ import {
     useDispatchLoad,
 } from '../../lib';
 
-import { Container, Layout } from '../../components';
+import { Container, Layout, Link } from '../../components';
 
 import { Page2PropsType, Page2PropsAlt } from './type';
 import { mapDispatchToProps } from './dispatch';
