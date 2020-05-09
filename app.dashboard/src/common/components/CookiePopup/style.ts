@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { Button, withStyles } from '@material-ui/core';
 import { absoluteCover, align, backgroundCover } from '@gannochenko/etc';
 
-// import cookies from './assets/';
+// eslint-disable-next-line global-require
+const cookies = require('./assets/cookies.jpg').default as string;
 
 export const CookiePopupContainer = styled.div<{ fadingAway: boolean }>`
     display: flex;
@@ -20,8 +21,8 @@ export const CookiePopupContainer = styled.div<{ fadingAway: boolean }>`
     transition: right 500ms ease, opacity 500ms ease;
 `;
 
-// ${backgroundCover(cookies)};
 export const Picture = styled.div`
+    ${backgroundCover(cookies)};
     width: 7rem;
     ${({ theme }) => ({
         [theme.breakpoints.down('xs')]: {
@@ -54,7 +55,7 @@ export const Copyright = styled.div`
     opacity: 0;
     ${absoluteCover()}
     background-color: white;
-    color: ${({ theme }) => theme.palette.secondary.main};
+    color: gray;
     font-size: ${({ theme }) => theme.typography.fontSize.micro};
     ${align('center', 'center', 'column')}
     transition: opacity 200ms ease;

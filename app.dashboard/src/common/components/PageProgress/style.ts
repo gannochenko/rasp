@@ -12,6 +12,6 @@ export const Container = styled.div`
 export const Bar = styled.div<{ progress: number; fading: boolean }>`
     width: ${(props) => props.progress || '0'}%;
     height: ${(props) => (!props.fading ? '0.3rem' : '0')};
-    background-color: #1f9668;
+    background-color: ${({ theme }) => theme.palette.primary.main};
     transition: width 300ms ease, height 700ms ease;
 `;
