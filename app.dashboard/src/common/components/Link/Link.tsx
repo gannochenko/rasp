@@ -57,7 +57,14 @@ export const Link: FunctionComponent<PropLinks> = (props) => {
     const link = to || href || '';
 
     if (!link.startsWith('/')) {
-        return <LinkStyled {...props} href={link} target="_blank" />;
+        return (
+            <LinkStyled
+                {...props}
+                href={link}
+                target="_blank"
+                rel="noreferrer noopener"
+            />
+        );
     }
 
     return <RouterLinkStyled to={link} {...props} />;

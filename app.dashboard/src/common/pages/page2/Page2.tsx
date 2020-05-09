@@ -6,6 +6,7 @@ import {
     useDispatchUnload,
     withClient,
     useDispatchLoad,
+    useScrollTop,
 } from '../../lib';
 
 import { Container, Layout, Link } from '../../components';
@@ -25,6 +26,7 @@ const Page2Component: FunctionComponent<Page2PropsType> = ({
     useDispatchLoad(dispatchLoad, serviceManager);
     useDispatchUnload(dispatchUnload);
     useErrorNotification(error, notify);
+    useScrollTop();
 
     return (
         <>

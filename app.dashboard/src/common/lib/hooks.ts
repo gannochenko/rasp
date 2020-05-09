@@ -90,3 +90,8 @@ export const useNetworkNotification = (
         }
     }, [notify, offline]);
 };
+
+export const useScrollTop = () =>
+    useEffect(() => {
+        window.scrollTo({ top: 0 });
+    }, []);

@@ -7,6 +7,7 @@ import {
     useDispatchUnload,
     withClient,
     useDispatchLoad,
+    useScrollTop,
 } from '../../lib';
 
 import { Container, Layout, Link } from '../../components';
@@ -26,6 +27,7 @@ const HomePageComponent: FunctionComponent<HomePagePropsType> = ({
     useDispatchLoad(dispatchLoad, serviceManager);
     useDispatchUnload(dispatchUnload);
     useErrorNotification(error, notify);
+    useScrollTop();
 
     return (
         <>
@@ -135,7 +137,7 @@ export const HomePage = withNotification<HomePagePropsAlt>(
 );
 
 export const HomePageRenderer: RendererType = () => (
-    <Layout topPadding>
+    <Layout>
         <HomePage />
     </Layout>
 );

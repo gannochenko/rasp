@@ -184,7 +184,7 @@ module.exports = (env, argv) => {
             !development &&
                 new HtmlWebpackPlugin({
                     template: './index.html',
-                    filename: path.join(publicFolder, 'SEO.tsx.html'),
+                    filename: path.join(publicFolder, 'index.html'),
                     // chunks: ['index']
                 }),
             !development && new HtmlWebpackInjector(),
