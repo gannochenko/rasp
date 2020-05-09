@@ -15,7 +15,8 @@
         "image:build": "./script/image.build.sh",
         "image:push": "./script/image.push.sh",
         "image:run": "./script/image.run.sh",
-        "serve": "serve ./build/public/"
+        "serve": "serve ./build/public/",
+        "deploy:ghp": "gh-pages -d build/public"
     },
     "husky": {
         "hooks": {
@@ -106,8 +107,10 @@
         "eslint-plugin-react-hooks": "^3.0.0",
         "file-loader": "^6.0.0",
         "fork-ts-checker-webpack-plugin-alt": "^0.4.14",
+        "gh-pages": "^2.2.0",
         "html-webpack-injector": "^1.1.2",
         "html-webpack-plugin": "^4.3.0",
+        "html-webpack-prefix-plugin": "^1.1.0",
         "husky": "^4.2.5",
         "jest": "^25.5.3",
         "jest-dom": "^4.0.0",

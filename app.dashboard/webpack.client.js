@@ -1,8 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const resolve = require('resolve');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-    .BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -22,7 +21,7 @@ module.exports = (env, argv) => {
         : path.join(buildFolder, 'public');
 
     const hmrPort = pEnv.NETWORK__PORT__HMR || 3001;
-    const bundleAnalyserPort = pEnv.NETWORK__PORT__BUNDLE_ANALYSER || 3010;
+    // const bundleAnalyserPort = pEnv.NETWORK__PORT__BUNDLE_ANALYSER || 3010;
 
     return {
         entry: development
@@ -46,11 +45,9 @@ module.exports = (env, argv) => {
               }
             : {
                   usedExports: true,
-                  splitChunks: development
-                      ? null
-                      : {
-                            chunks: 'all',
-                        },
+                  splitChunks: {
+                      chunks: 'all',
+                  },
               },
         module: {
             rules: [
@@ -168,12 +165,12 @@ module.exports = (env, argv) => {
                 __DEV__: development,
                 __TEST__: false,
             }),
-            development &&
-                new BundleAnalyzerPlugin({
-                    analyzerHost: '0.0.0.0',
-                    analyzerPort: bundleAnalyserPort,
-                    openAnalyzer: false,
-                }),
+            // development &&
+            //     new BundleAnalyzerPlugin({
+            //         analyzerHost: '0.0.0.0',
+            //         analyzerPort: bundleAnalyserPort,
+            //         openAnalyzer: false,
+            //     }),
             !development &&
                 new CopyPlugin([
                     {
