@@ -12,7 +12,6 @@ import { HeaderPropsType } from './type';
 import { Menu } from '../Menu';
 
 export const Header: FunctionComponent<HeaderPropsType> = ({
-    children,
     ...restProps
 }) => {
     return (
