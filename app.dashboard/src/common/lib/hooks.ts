@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { NotificationContextPropsType } from '@gannochenko/ui';
 import {
     DispatchUnload,
     DispatchLoad,
@@ -8,7 +9,6 @@ import {
 import { Error, Notify } from '../type';
 import { Nullable } from '../../type';
 import { ServiceManager } from './service-manager';
-import { NotificationContextPropsType } from '@gannochenko/ui';
 
 export const useNetworkMonitor = (
     dispatch: Dispatch,

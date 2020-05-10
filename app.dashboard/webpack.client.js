@@ -40,9 +40,7 @@ module.exports = (env, argv) => {
         },
         devtool: development ? 'source-map' : false,
         optimization: development
-            ? {
-                  usedExports: true,
-              }
+            ? {}
             : {
                   usedExports: true,
                   splitChunks: {
@@ -110,8 +108,20 @@ module.exports = (env, argv) => {
                     include: [path.join(__dirname, 'src/client'), sourceFolder],
                 },
                 {
-                    test: /\.(txt|html)$/,
+                    test: /\.(txt)$/,
                     use: 'raw-loader',
+                },
+                {
+                    test: /\.(html)$/,
+                    use: 'html-loader',
+                },
+                {
+                    test: /\.(eot|otf|ttf|woff|woff2)$/i,
+                    use: [
+                        {
+                            loader: 'file-loader',
+                        },
+                    ],
                 },
                 {
                     test: /\.(jpe?g|gif|png|svg|ico)$/i,
@@ -119,7 +129,29 @@ module.exports = (env, argv) => {
                         {
                             loader: 'url-loader',
                             options: {
-                                limit: 8192,
+                                limit: 10 * 1024,
+                            },
+                        },
+                        {
+                            loader: 'image-webpack-loader',
+                            options: {
+                                mozjpeg: {
+                                    progressive: true,
+                                    quality: 65,
+                                },
+                                optipng: {
+                                    optimizationLevel: 7,
+                                },
+                                pngquant: {
+                                    quality: [0.65, 0.9],
+                                    speed: 4,
+                                },
+                                gifsicle: {
+                                    interlaced: false,
+                                },
+                                // webp: {
+                                //     quality: 75,
+                                // },
                             },
                         },
                     ],
@@ -181,7 +213,7 @@ module.exports = (env, argv) => {
             !development &&
                 new HtmlWebpackPlugin({
                     template: './index.html',
-                    filename: path.join(publicFolder, 'Copyright.tsx.html'),
+                    filename: path.join(publicFolder, 'index.html'),
                     // chunks: ['index']
                 }),
             !development && new HtmlWebpackInjector(),
@@ -202,7 +234,7 @@ module.exports = (env, argv) => {
         },
         output: {
             path: publicFolder,
-            publicPath: development ? `http://localhost:${hmrPort}/` : '/',
+            publicPath: development ? `http://localhost:${hmrPort}/` : '',
             filename: development ? 'client.js' : '[name].[hash].js',
         },
     };
