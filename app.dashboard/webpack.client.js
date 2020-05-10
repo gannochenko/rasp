@@ -8,6 +8,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInjector = require('html-webpack-injector');
 const Dotenv = require('dotenv-webpack');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = (env, argv) => {
     const pEnv = process.env;
@@ -219,6 +220,17 @@ module.exports = (env, argv) => {
             !development && new HtmlWebpackInjector(),
             new Dotenv({
                 systemvars: true,
+            }),
+            new FaviconsWebpackPlugin({
+                logo: './src/common/components/Header/assets/logo.png',
+                cache: true,
+                prefix: '/assets/',
+                favicons: {
+                    appName: 'Rasp Dashboard',
+                    appDescription: 'Rasp Dashboard',
+                    background: '#ddd',
+                    theme_color: '#333',
+                },
             }),
         ].filter((x) => !!x),
         devServer: {

@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { foregroundColor } from '@gannochenko/etc';
+import { backgroundCover, foregroundColor } from '@gannochenko/etc';
 import { Container } from '../Container';
+
+// eslint-disable-next-line global-require
+const logo = require('./assets/logo.png').default as string;
 
 export const HeaderRoot = styled.div`
     height: 3rem;
@@ -41,4 +44,15 @@ export const Right = styled.div`
 export const Logo = styled(Link)`
     ${({ theme }) => foregroundColor(theme.palette.white, theme.palette.white)};
     text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    &:before {
+        content: '';
+        ${backgroundCover(logo)}
+        width: 2rem;
+        height: 2rem;
+        display: block;
+        margin-right: 1rem;
+    }
 `;
