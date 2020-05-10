@@ -9,6 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInjector = require('html-webpack-injector');
 const Dotenv = require('dotenv-webpack');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = (env, argv) => {
     const pEnv = process.env;
@@ -43,10 +44,59 @@ module.exports = (env, argv) => {
         optimization: development
             ? {}
             : {
+                  minimize: true,
+                  minimizer: [
+                      new TerserPlugin({
+                          cache: true,
+                          parallel: true,
+                          sourceMap: true,
+                          terserOptions: {
+                              warnings: false,
+                              parse: {},
+                              compress: {
+                                  comparisons: false,
+                              },
+                              mangle: true,
+                              // module: false,
+                              output: {
+                                  comments: false,
+                                  ascii_only: true,
+                              },
+                              // toplevel: false,
+                              // nameCache: null,
+                              // ie8: false,
+                              // keep_classnames: undefined,
+                              // keep_fnames: false,
+                              // safari10: false,
+                          },
+                      }),
+                  ],
+                  nodeEnv: 'production',
                   usedExports: true,
+                  sideEffects: true,
+                  concatenateModules: true,
                   splitChunks: {
                       chunks: 'all',
+                      minSize: 30000,
+                      minChunks: 1,
+                      maxAsyncRequests: 5,
+                      maxInitialRequests: 3,
+                      name: true,
+                      cacheGroups: {
+                          commons: {
+                              test: /[\\/]node_modules[\\/]/,
+                              name: 'vendor',
+                              chunks: 'all',
+                          },
+                          main: {
+                              chunks: 'all',
+                              minChunks: 2,
+                              reuseExistingChunk: true,
+                              enforce: true,
+                          },
+                      },
                   },
+                  runtimeChunk: true,
               },
         module: {
             rules: [
@@ -247,7 +297,8 @@ module.exports = (env, argv) => {
         output: {
             path: publicFolder,
             publicPath: development ? `http://localhost:${hmrPort}/` : '',
-            filename: development ? 'client.js' : '[name].[hash].js',
+            filename: development ? 'client.js' : '[name].[chunkhash].js',
+            chunkFilename: '[name].[chunkhash].chunk.js',
         },
     };
 };
