@@ -265,7 +265,25 @@ module.exports = (env, argv) => {
                 new HtmlWebpackPlugin({
                     template: './index.html',
                     filename: path.join(publicFolder, 'index.html'),
-                    // chunks: ['index']
+                    inject: true,
+                    minify: {
+                        removeComments: true,
+                        collapseWhitespace: true,
+                        removeRedundantAttributes: true,
+                        useShortDoctype: true,
+                        removeEmptyAttributes: true,
+                        removeStyleLinkTypeAttributes: true,
+                        keepClosingSlash: true,
+                        minifyJS: true,
+                        minifyCSS: true,
+                        minifyURLs: true,
+                    },
+                }),
+            !development &&
+                new webpack.HashedModuleIdsPlugin({
+                    hashFunction: 'sha256',
+                    hashDigest: 'hex',
+                    hashDigestLength: 20,
                 }),
             !development && new HtmlWebpackInjector(),
             new Dotenv({
