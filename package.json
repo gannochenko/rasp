@@ -1,22 +1,23 @@
 {
-    "name": "rasp",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "script/start.sh",
-        "dev": "script/start.sh -p",
-        "dev:infra": "script/start.sh -i",
-        "pull-images": "script/pull-images.sh"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "MIT",
-    "devDependencies": {
-        "concurrently": "^5.2.0",
-        "js-yaml": "^3.13.1"
-    },
-    "dependencies": {
-        "@gannochenko/ui": "^1.0.3"
-    }
+  "name": "rasp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "script/start.sh",
+    "dev": "script/start.sh -p",
+    "dev:infra": "script/start.sh -i",
+    "pull-images": "script/pull-images.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "js-yaml": "^3.13.1",
+    "matcher": "^3.0.0"
+  },
+  "dependencies": {
+    "@gannochenko/ui": "^1.0.3"
+  }
 }

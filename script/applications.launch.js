@@ -6,6 +6,8 @@ const fs = require("fs");
 
 const colors = ["red", "green", "yellow", "blue", "magenta", "cyan"];
 
+const appFilter = (process.argv[2] ? process.argv[2] : "").replace(/\/$/, "");
+
 try {
   const apps = yaml.safeLoad(
     fs.readFileSync("./infra/development.yml", "utf8")
@@ -13,14 +15,22 @@ try {
 
   const commands = [];
   if (apps && apps.services) {
-    Object.keys(apps.services).forEach(serviceName => {
+    Object.keys(apps.services).forEach((serviceName) => {
       const service = apps.services[serviceName];
       const env = service.environment || [];
+
+      if (appFilter) {
+        if (
+          !(serviceName === appFilter || `app.${serviceName}` === appFilter)
+        ) {
+          return;
+        }
+      }
 
       commands.push({
         command: `cd ./app.${serviceName}; ${env.join(" ")} yarn run dev;`,
         name: `${serviceName}_1`,
-        prefixColor: colors[Math.floor(Math.random() * colors.length)]
+        prefixColor: colors[Math.floor(Math.random() * colors.length)],
       });
     });
   }
@@ -29,7 +39,7 @@ try {
     concurrently(commands, {
       prefix: "name",
       killOthers: ["failure", "success"],
-      restartTries: 3
+      restartTries: 3,
     }).then(
       () => {},
       () => {

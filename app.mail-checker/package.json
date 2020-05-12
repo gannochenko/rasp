@@ -29,9 +29,8 @@
     "private": true,
     "dependencies": {
         "@babel/polyfill": "^7.8.7",
-        "@bucket-of-bolts/express-mvc": "^1.0.17",
-        "@bucket-of-bolts/microdash": "^1.0.14",
-        "@bucket-of-bolts/util": "^1.0.16",
+        "@gannochenko/etc": "^1.0.3",
+        "@gannochenko/express.mvc": "^1.0.0",
         "body-parser": "^1.19.0",
         "clone-deep": "^4.0.1",
         "cors": "^2.8.5",
