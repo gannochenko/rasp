@@ -4,7 +4,7 @@ import { backgroundCover, foregroundColor } from '@gannochenko/etc';
 import { Container } from '../Container';
 
 // eslint-disable-next-line global-require
-const logo = require('./assets/logo.png').default as string;
+const logo = require('./assets/logo.svg').default as string;
 
 export const HeaderRoot = styled.div`
     height: 3rem;
@@ -50,7 +50,7 @@ export const Logo = styled(Link)`
     &:before {
         content: '';
         ${backgroundCover(logo)}
-        width: 2rem;
+        width: 1.5rem;
         height: 2rem;
         display: block;
         margin-right: 1rem;

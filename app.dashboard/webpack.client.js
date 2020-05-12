@@ -290,7 +290,7 @@ module.exports = (env, argv) => {
                 systemvars: true,
             }),
             new FaviconsWebpackPlugin({
-                logo: './src/common/components/Header/assets/logo.png',
+                logo: './src/common/components/Header/assets/logo.svg',
                 cache: true,
                 prefix: '/assets/',
                 favicons: {
