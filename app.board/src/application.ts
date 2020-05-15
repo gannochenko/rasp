@@ -17,7 +17,7 @@ import { useGRPC } from './grpc';
     useErrorHandler(app);
 
     const host = process.env.NETWORK__HOST || 'localhost';
-    const port = process.env.PORT || process.env.NETWORK__PORT || 3000;
+    const port = process.env.PORT || process.env.HTTP__PORT || 3000;
 
     app.set('host', host);
     app.set('port', port);
@@ -27,7 +27,7 @@ import { useGRPC } from './grpc';
 
     app.use(helmet());
 
-    const grpc = await useGRPC();
+    const grpc = await useGRPC(app);
 
     useControllers(app, controllers, async () => ({
         grpc,

@@ -16,9 +16,9 @@ services:
       - NODE_ENV=development
       - DEBUG_COLORS=1
       - DEBUG_HIDE_DATE=1
-      - NETWORK__PORT=3000
-      - NETWORK__PORT__HMR=3001
-      - NETWORK__PORT__BUNDLE_ANALYSER=3010
+      - HTTP__PORT=3000
+      - HTTP__PORT__HMR=3001
+      - HTTP__PORT__BUNDLE_ANALYSER=3010
       - NETWORK__CORS=
       - TEMPLATE__PATH=./index.html
       - "NETWORK__API=http://localhost:4000"
@@ -44,8 +44,8 @@ services:
       - DEBUG=gql.*
       - DEBUG_COLORS=1
       - DEBUG_HIDE_DATE=1
-      - NETWORK__PORT=4000
-      - NETWORK__PORT__DEBUGGER=4001
+      - HTTP__PORT=4000
+      - HTTP__PORT__DEBUGGER=4001
       - NETWORK__CORS=
       - "DATABASE__URL=postgres://root:123@localhost:5432/rasp"
       - GRPC__PORT=5000
@@ -71,8 +71,8 @@ services:
       - DEBUG=gql.*
       - DEBUG_COLORS=1
       - DEBUG_HIDE_DATE=1
-      - NETWORK__PORT=5000
-      - NETWORK__PORT__DEBUGGER=5001
+      - HTTP__PORT=5000
+      - HTTP__PORT__DEBUGGER=5001
       - NETWORK__CORS=
       - GRPC__PORT=5000
       - GRPC__HOST=backend
@@ -98,10 +98,10 @@ services:
       - DEBUG=gql.*
       - DEBUG_COLORS=1
       - DEBUG_HIDE_DATE=1
-      - NETWORK__PORT=8000
-      - NETWORK__PORT__DEBUGGER=8001
+      - NETWORK__HOST=0.0.0.0
+      - HTTP__PORT=8000
+      - HTTP__PORT__DEBUGGER=8001
       - NETWORK__CORS=
-      - GRPC__PORT=5000
-      - GRPC__HOST=board
+      - GRPC__PORT=8100
     labels:
       com.list.name: Board

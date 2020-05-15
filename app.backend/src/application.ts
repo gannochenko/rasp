@@ -18,7 +18,7 @@ import { useGRPC } from './grpc';
     useErrorHandler(app);
 
     const host = process.env.NETWORK__HOST || 'localhost';
-    const port = process.env.PORT || process.env.NETWORK__PORT || 5000;
+    const port = process.env.PORT || process.env.HTTP__PORT || 5000;
 
     app.set('host', host);
     app.set('port', port);

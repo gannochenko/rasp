@@ -12,7 +12,7 @@ module.exports = (env, argv) => {
         argv.mode === 'development' || pEnv.NODE_ENV === 'development';
     const useDebugger = pEnv.USE_DEBUGGER;
     const useDebuggerBrk = pEnv.USE_DEBUGGER_BRK;
-    const debuggerPort = pEnv.NETWORK__PORT__DEBUGGER;
+    const debuggerPort = pEnv.HTTP__PORT__DEBUGGER;
 
     const sourceFolder = path.join(__dirname, 'src');
     const destinationFolder = path.join(__dirname, 'build');

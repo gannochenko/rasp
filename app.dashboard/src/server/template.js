@@ -3,7 +3,7 @@ import util from 'util';
 
 export class Template {
     constructor() {
-        this.portHMR = __DEV__ ? process.env.NETWORK__PORT__HMR || 3001 : 0;
+        this.portHMR = __DEV__ ? process.env.HTTP__PORT__HMR || 3001 : 0;
         this.templatePath =
             process.env.TEMPLATE__PATH ||
             (__DEV__ ? './index.html' : './public/index.html');

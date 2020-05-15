@@ -22,8 +22,8 @@ module.exports = (env, argv) => {
         ? buildFolder
         : path.join(buildFolder, 'public');
 
-    const hmrPort = pEnv.NETWORK__PORT__HMR || 3001;
-    // const bundleAnalyserPort = pEnv.NETWORK__PORT__BUNDLE_ANALYSER || 3010;
+    const hmrPort = pEnv.HTTP__PORT__HMR || 3001;
+    // const bundleAnalyserPort = pEnv.HTTP__PORT__BUNDLE_ANALYSER || 3010;
 
     return {
         entry: development

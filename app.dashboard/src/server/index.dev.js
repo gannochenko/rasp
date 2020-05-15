@@ -3,7 +3,7 @@ import { app } from './server';
 
 const server = http.createServer(app);
 let currentApp = app;
-const port = process.env.PORT || process.env.NETWORK__PORT || 3000;
+const port = process.env.PORT || process.env.HTTP__PORT || 3000;
 server.listen(port);
 // eslint-disable-next-line no-console
 console.log(`Bundle is served on port ${port}`);

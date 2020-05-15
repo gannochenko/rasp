@@ -35,7 +35,7 @@ resource "kubernetes_deployment" "app-dashboard" {
           }
 
           env {
-            name = "NETWORK__PORT"
+            name = "HTTP__PORT"
             value = var.port
           }
 
