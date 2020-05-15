@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 VENDOR="gannochenko"
-APPLICATION_NAME="rasp_mail-checker"
-PORT="4000"
+APPLICATION_NAME="rasp_board"
+PORT="8000"
 
 # this script runs a standalone image created with script/image.build.sh
 

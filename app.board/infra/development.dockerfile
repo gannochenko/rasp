@@ -1,12 +1,6 @@
 FROM node:13
 RUN apt-get update && apt-get install -y --no-install-recommends vim && apt-get clean
-
+#RUN useradd -ms /bin/bash vagrant
+#USER vagrant
 WORKDIR /app
-
-ENV NODE_ENV=production
-
-COPY ./build/ .
-RUN yarn
-
-EXPOSE 3000
-CMD [ "yarn", "start" ]
+CMD ["yarn", "run", "dev"]

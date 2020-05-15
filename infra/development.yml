@@ -79,3 +79,29 @@ services:
     labels:
       com.list.name: Dashboard backend
       com.list.link.endpoint: GraphQL endpoint|/graphql
+  board:
+    image: "board:dev"
+    build:
+      context: ../app.board/
+      dockerfile: infra/development.dockerfile
+    expose:
+      - "8000"
+      - "8001"
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+    depends_on: []
+    volumes:
+      - "../app.board/:/app/"
+    environment:
+      - NODE_ENV=development
+      - DEBUG=gql.*
+      - DEBUG_COLORS=1
+      - DEBUG_HIDE_DATE=1
+      - NETWORK__PORT=8000
+      - NETWORK__PORT__DEBUGGER=8001
+      - NETWORK__CORS=
+      - GRPC__PORT=5000
+      - GRPC__HOST=board
+    labels:
+      com.list.name: Board

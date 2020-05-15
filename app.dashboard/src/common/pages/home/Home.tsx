@@ -4,12 +4,11 @@ import { Button } from '@material-ui/core';
 import { RendererType, withNotification } from '@gannochenko/ui';
 import { withClient, usePage } from '../../lib';
 
-import { Container, Layout, Link } from '../../components';
+import { Container, Layout, Link, SEO } from '../../components';
 
 import { HomePagePropsType, HomePagePropsAlt } from './type';
 import { mapDispatchToProps } from './dispatch';
 import { ObjectLiteral } from '../../../type';
-import { SEO } from '../../components/SEO';
 
 const HomePageComponent: FunctionComponent<HomePagePropsType> = (props) => {
     const { notify } = props;
