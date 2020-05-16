@@ -1,119 +1,29 @@
 // @ts-ignore
 import grpc from 'grpc';
-import { logInfo, lCFirst } from '@gannochenko/etc';
-import util from 'util';
 
-import gRPCSchema from './schema.proto';
-import { implementation } from './implementation';
-import { Nullable, ObjectLiteral } from '../type';
+import serverSchema from './services/board.proto';
+import { Callback } from './type';
 
-type HandlerAsync = (...args: any[]) => Promise<unknown>;
-type HandlersAsync = ObjectLiteral<HandlerAsync>;
-
-type Callback = (err: Nullable<Error>, res: any) => void;
-type HandlerCallback = (call: any, callback: Callback) => void;
-type HandlersCallback = ObjectLiteral<HandlerCallback>;
-
-let serverInstance: Nullable<grpc.Server> = null;
-
-const getServer = (host: string, port: string | number) => {
-    if (!serverInstance) {
-        serverInstance = new grpc.Server();
-        serverInstance.bind(
-            `${host}:${port}`,
-            grpc.ServerCredentials.createInsecure(),
-        );
-    }
-
-    return serverInstance;
+const calbackify = (fn: (call: any) => Promise<unknown>) => (
+    call: any,
+    callback: Callback,
+) => {
+    fn(call)
+        .then((res: unknown) => callback(null, res))
+        .catch((error: Error) => callback(error, null));
 };
 
-const hasServer = () => !!serverInstance;
+export const run = () => {
+    const definition = grpc.loadPackageDefinition(serverSchema);
 
-const transformToCallbacks = (handlers: HandlersAsync) => {
-    const result: HandlersCallback = {};
-    Object.keys(handlers).forEach((handlerName) => {
-        result[handlerName] = (call: any, callback: Callback) => {
-            handlers[handlerName](call)
-                .then((res: unknown) => callback(null, res))
-                .catch((error: Error) => callback(error, null));
-        };
+    const client = new definition.Board(
+        'raspberrypi.fritz.box:50051',
+        grpc.credentials.createInsecure(),
+    );
+    console.log(client);
+
+    client.shutdown({ restart: false }, (err: any, res: any) => {
+        console.log(err);
+        console.log(res);
     });
-
-    return result;
-};
-
-export const useGRPC = async (options?: {
-    server: boolean;
-    client: boolean;
-}) => {
-    const { server, client } = options || {};
-
-    const host = process.env.GRPC__HOST || '0.0.0.0';
-    const port = process.env.GRPC__PORT || 50051;
-
-    const definition = grpc.loadPackageDefinition(gRPCSchema);
-    const namespaces = Object.keys(definition);
-    if (!namespaces.length) {
-        throw new Error('gRPC: no namespaces detected');
-    }
-
-    const clients: ObjectLiteral<ObjectLiteral> = {};
-
-    namespaces.forEach((nameSpaceCode: string) => {
-        const nameSpaceServices = definition[nameSpaceCode];
-        const serviceNames = Object.keys(nameSpaceServices);
-
-        serviceNames.forEach((serviceName) => {
-            const Service = nameSpaceServices[serviceName];
-            if (Service.service) {
-                if (server !== false) {
-                    if (
-                        !implementation[nameSpaceCode] ||
-                        !implementation[nameSpaceCode][serviceName]
-                    ) {
-                        throw new Error(
-                            `gRPC: no implementations found for service ${nameSpaceCode}/${serviceName}`,
-                        );
-                    }
-
-                    getServer(host, port).addService(
-                        Service.service,
-                        transformToCallbacks(
-                            implementation[nameSpaceCode][serviceName],
-                        ),
-                    );
-                }
-
-                if (client !== false) {
-                    const clientInstance = new Service(
-                        `${host}:${port}`,
-                        grpc.credentials.createInsecure(),
-                    );
-
-                    const methodNames = Object.keys(Service.service);
-                    methodNames.forEach((methodName) => {
-                        methodName = lCFirst(methodName);
-                        if (typeof clientInstance[methodName] === 'function') {
-                            clientInstance[methodName] = util.promisify(
-                                clientInstance[methodName],
-                            );
-                        }
-                    });
-
-                    clients[nameSpaceCode] = clients[nameSpaceCode] || {};
-                    clients[nameSpaceCode][serviceName] = clientInstance;
-                }
-            }
-        });
-    });
-
-    if (hasServer()) {
-        getServer(host, port).start();
-        logInfo(
-            `🚀 Dashboard backend gRPC server is ready at http://${host}:${port}`,
-        );
-    }
-
-    return clients;
 };

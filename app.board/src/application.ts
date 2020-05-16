@@ -27,10 +27,10 @@ import { useGRPC } from './grpc';
 
     app.use(helmet());
 
-    const grpc = await useGRPC(app);
+    const gRPCClients = useGRPC(app, {}, async () => ({}));
 
     useControllers(app, controllers, async () => ({
-        grpc,
+        grpc: gRPCClients,
     }));
 
     const server = app.listen({ port }, () => {

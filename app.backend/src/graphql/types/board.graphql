@@ -1,0 +1,15 @@
+type ShutdownResult {
+    errors: [Error]
+}
+#
+#input SampleInput {
+#    title: String
+#}
+
+#type Query {
+#    getSample(id: String!): SampleResult
+#}
+
+type Mutation {
+    shutdownBoard(restart: Boolean): ShutdownResult
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+service Board {
+    rpc shutdown (ShutdownRequest) returns (ShutdownReply) {}
+}
+
+message ShutdownRequest {
+    bool restart = 1;
+}
+
+message ShutdownReply {
+}

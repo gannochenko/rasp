@@ -91,7 +91,7 @@ module.exports = (env, argv) => {
             // new webpack.ProvidePlugin({
             //     _: [path.join(__dirname, `common/lib/lodash.js`), 'default'],
             // }),
-            development && new StartServerPlugin('server.js'),
+            development && new StartServerPlugin('board.proto.js'),
             new webpack.NamedModulesPlugin(),
             development && new webpack.HotModuleReplacementPlugin(),
             new webpack.NoEmitOnErrorsPlugin(),
@@ -114,7 +114,7 @@ module.exports = (env, argv) => {
         ].filter((x) => !!x),
         output: {
             path: destinationFolder,
-            filename: 'server.js',
+            filename: 'board.proto.js',
             libraryTarget: 'commonjs',
         },
     };
