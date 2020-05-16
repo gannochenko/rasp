@@ -1,18 +1,19 @@
 // @ts-ignore
+// @ts-ignore
 import grpc from 'grpc';
 import { Express } from 'express';
 import { logInfo } from '@gannochenko/etc';
+import { promisify } from 'util';
 
 import { services } from './services';
 import { implementations } from './implementations';
-
 import { ObjectLiteral } from '../type';
 import { Callback } from './type';
-import { promisify } from 'util';
 
 export const useGRPC = (
     app: Express,
     clientEndpoints: ObjectLiteral<string> = {},
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     dataSources: ObjectLiteral = {},
     contextBuilder = async () => ({}),
 ) => {
