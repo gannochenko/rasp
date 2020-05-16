@@ -12,7 +12,12 @@ export const boardResolvers = {
             const { restart } = args;
             const result = new Result();
 
-            console.log(restart);
+            const boardClient = context.grpc.getBoard();
+
+            const res = await boardClient.shutdown({ restart });
+
+            console.log('result:');
+            console.log(res);
 
             return result;
         },

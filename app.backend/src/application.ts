@@ -11,7 +11,7 @@ import { useMetrics } from './lib/metrics';
 
 import { useGraphQL } from './graphql/server';
 import { controllers } from './controller';
-import { run } from './grpc';
+import { useGRPC } from './grpc';
 
 (async () => {
     const app = express();
@@ -28,14 +28,16 @@ import { run } from './grpc';
 
     app.use(helmet());
 
-    const methods = run();
-
     useControllers(app, controllers, async () => ({
         // grpc,
     }));
 
+    const clients = useGRPC(app, {
+        Board: 'raspberrypi.fritz.box',
+    });
+
     useGraphQL(app, {}, async () => ({
-        // grpc,
+        grpc: clients,
     }));
 
     const server = app.listen({ port }, () => {

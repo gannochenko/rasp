@@ -1,8 +1,12 @@
 export const boardImplementation = {
     Board: {
-        shutdown: async (call: any, context: any) => {
-            console.log(call);
-            console.log(context);
+        shutdown: async (call: any) => {
+            const {
+                request: { restart },
+            } = call;
+
+            console.log('grpc restart:');
+            console.log(restart);
         },
     },
 };

@@ -27,7 +27,7 @@ import { useGRPC } from './grpc';
 
     app.use(helmet());
 
-    const gRPCClients = useGRPC(app, {}, async () => ({}));
+    const gRPCClients = useGRPC(app);
 
     useControllers(app, controllers, async () => ({
         grpc: gRPCClients,

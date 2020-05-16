@@ -8,12 +8,13 @@ import { implementations } from './implementations';
 
 import { ObjectLiteral } from '../type';
 import { Callback } from './type';
+import { promisify } from 'util';
 
 export const useGRPC = (
     app: Express,
-    dataSources: ObjectLiteral,
-    contextBuilder = async () => ({}),
     clientEndpoints: ObjectLiteral<string> = {},
+    dataSources: ObjectLiteral = {},
+    contextBuilder = async () => ({}),
 ) => {
     let server: grpc.Server;
     const clients: ObjectLiteral = {};
@@ -59,11 +60,26 @@ export const useGRPC = (
                     );
                 } else {
                     if (clientEndpoints[key]) {
-                        clients[`get${key}`] = () =>
-                            new definition[key](
+                        const methodNames = Object.keys(
+                            definition[key].service,
+                        );
+
+                        const connector = () => {
+                            const client = new definition[key](
                                 `${clientEndpoints[key]}:50051`,
                                 grpc.credentials.createInsecure(),
                             );
+
+                            methodNames.forEach((methodName) => {
+                                client[methodName] = promisify(
+                                    client[methodName],
+                                );
+                            });
+
+                            return client;
+                        };
+
+                        clients[`get${key}`] = connector;
                     }
                 }
             }
