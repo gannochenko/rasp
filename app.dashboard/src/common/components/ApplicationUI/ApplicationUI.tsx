@@ -23,7 +23,7 @@ import {
     HomePageRenderer,
     NotFoundPageRenderer,
     ForbiddenPageRenderer,
-    Page2Renderer,
+    BoardPageRenderer,
     CookiePolicyRenderer,
 } from '../../pages';
 import { ObjectLiteral } from '../../../type';
@@ -60,7 +60,11 @@ const ApplicationUIComponent: FunctionComponent<ApplicationProperties> = ({
                 <ConnectedRouter history={history}>
                     <Switch>
                         <Route exact path="/" renderer={HomePageRenderer} />
-                        <Route exact path="/page2" renderer={Page2Renderer} />
+                        <Route
+                            exact
+                            path="/board"
+                            renderer={BoardPageRenderer}
+                        />
                         <Route
                             exact
                             path="/cookie-policy"

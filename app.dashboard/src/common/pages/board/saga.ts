@@ -2,8 +2,6 @@ import { takeLatest, put } from 'redux-saga/effects';
 import * as reducer from './reducer';
 import { LoadAction } from '../../store/type';
 
-const delay = () => new Promise((res) => setTimeout(res, 2000));
-
 function* load(action: LoadAction) {
     if (!action) {
         return;
@@ -15,7 +13,6 @@ function* load(action: LoadAction) {
 
     try {
         const data = {};
-        yield delay();
         yield put({ type: reducer.LOAD_SUCCESS, payload: { data } });
     } catch (error) {
         yield put({ type: reducer.LOAD_FAILURE, payload: error });
@@ -25,6 +22,6 @@ function* load(action: LoadAction) {
     }
 }
 
-export const page2Saga = function* watcher() {
+export const boardPageSaga = function* watcher() {
     yield takeLatest(reducer.LOAD, load);
 };

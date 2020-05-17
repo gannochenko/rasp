@@ -1,4 +1,9 @@
 import { applicationSaga } from '../components';
-import { homePageSaga, page2Saga, cookiePolicyPageSaga } from '../pages';
+import { homePageSaga, boardPageSaga, cookiePolicyPageSaga } from '../pages';
 
-export default [applicationSaga, homePageSaga, page2Saga, cookiePolicyPageSaga];
+export default [
+    applicationSaga,
+    homePageSaga,
+    boardPageSaga,
+    cookiePolicyPageSaga,
+];

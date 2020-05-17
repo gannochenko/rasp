@@ -1,19 +1,19 @@
-import { Page2State } from './type';
+import { BoardPageState } from './type';
 import { Action } from '../../store/type';
 
-export const LOAD = 'page2.load';
-export const LOAD_SUCCESS = 'page2.load.success';
-export const LOAD_FAILURE = 'page2.load.failure';
-export const UNLOAD = 'page2.unload';
+export const LOAD = 'board.load';
+export const LOAD_SUCCESS = 'board.load.success';
+export const LOAD_FAILURE = 'board.load.failure';
+export const UNLOAD = 'board.unload';
 
-export const initialState: Page2State = {
+export const initialState: BoardPageState = {
     loading: false,
     ready: false,
     error: null,
 };
 
-export const page2Reducer = (
-    state: Page2State = initialState,
+export const boardPageReducer = (
+    state: BoardPageState = initialState,
     action: Action,
 ) => {
     switch (action.type) {

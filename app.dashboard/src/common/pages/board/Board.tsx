@@ -2,20 +2,19 @@ import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import { RendererType, withNotification } from '@gannochenko/ui';
 import { withClient, usePage } from '../../lib';
+import { Container, Layout, Link, SEO } from '../../components';
 
-import { Container, Layout, Link } from '../../components';
-
-import { Page2PropsType, Page2PropsAlt } from './type';
+import { BoardPagePropsType, BoardPageOwnPropsType } from './type';
 import { mapDispatchToProps } from './dispatch';
-import { ObjectLiteral } from '../../../type';
-import { SEO } from '../../components/SEO';
 
-const Page2Component: FunctionComponent<Page2PropsType> = (props) => {
+import { ObjectLiteral } from '../../../type';
+
+const BoardPageComponent: FunctionComponent<BoardPagePropsType> = (props) => {
     usePage(props);
 
     return (
         <>
-            <SEO title="Page 2" />
+            <SEO title="Board" />
             <Container>
                 <Link to="/">Home</Link>
             </Container>
@@ -23,17 +22,17 @@ const Page2Component: FunctionComponent<Page2PropsType> = (props) => {
     );
 };
 
-export const Page2 = withNotification<Page2PropsAlt>(
+export const BoardPage = withNotification<BoardPageOwnPropsType>(
     withClient(
         connect(
-            (state: ObjectLiteral) => state.page2,
+            (state: ObjectLiteral) => state.board,
             mapDispatchToProps,
-        )(Page2Component),
+        )(BoardPageComponent),
     ),
 );
 
-export const Page2Renderer: RendererType = () => (
+export const BoardPageRenderer: RendererType = () => (
     <Layout>
-        <Page2 />
+        <BoardPage />
     </Layout>
 );
