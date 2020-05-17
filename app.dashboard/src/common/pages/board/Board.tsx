@@ -2,10 +2,11 @@ import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import { RendererType, withNotification } from '@gannochenko/ui';
 import { withClient, usePage } from '../../lib';
-import { Container, Layout, Link, SEO } from '../../components';
+import { Container, Copyright, Layout, Link, SEO } from '../../components';
 
 import { BoardPagePropsType, BoardPageOwnPropsType } from './type';
 import { mapDispatchToProps } from './dispatch';
+import { Picture } from './style';
 
 import { ObjectLiteral } from '../../../type';
 
@@ -17,6 +18,12 @@ const BoardPageComponent: FunctionComponent<BoardPagePropsType> = (props) => {
             <SEO title="Board" />
             <Container>
                 <Link to="/">Home</Link>
+                <Picture />
+                <Copyright
+                    author="Jstrom99"
+                    source="https://commons.wikimedia.org/wiki/File:RaspberryPi_Model_4B.svg"
+                    sourceText="Wikipedia"
+                />
             </Container>
         </>
     );
