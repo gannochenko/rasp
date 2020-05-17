@@ -18,13 +18,6 @@ const HomePageComponent: FunctionComponent<HomePagePropsType> = (props) => {
         <>
             <SEO title="Home" />
             <Container>
-                <Link to="/page2">Page 2</Link>
-                <br />
-                <Link to="/missing-page">Missing page</Link>
-                <br />
-                <Link to="/403">Forbidden page</Link>
-                <br />
-                <br />
                 <Button
                     variant="contained"
                     color="primary"

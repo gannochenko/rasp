@@ -26,7 +26,7 @@ export const Menu: FunctionComponent<Props> = () => {
         <MenuRoot>
             <Main>
                 <Items>
-                    <Item to="/page2">Page 2</Item>
+                    <Item to="/board">Board</Item>
                 </Items>
                 <Hamburger onClick={onHamburgerClick}>
                     <Bar />
@@ -35,8 +35,8 @@ export const Menu: FunctionComponent<Props> = () => {
                 </Hamburger>
             </Main>
             <MobileItems open={mobileMenuOpen}>
-                <MobileItem to="/page2" onClick={onMobileItemClick}>
-                    Page 2
+                <MobileItem to="/board" onClick={onMobileItemClick}>
+                    Board
                 </MobileItem>
             </MobileItems>
         </MenuRoot>
