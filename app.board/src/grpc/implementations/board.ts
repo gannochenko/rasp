@@ -1,4 +1,4 @@
-import { ShutdownService } from '../../service/shutdown';
+import { SystemService } from '../../service/system';
 
 export const boardImplementation = {
     Board: {
@@ -7,7 +7,7 @@ export const boardImplementation = {
                 request: { restart },
             } = call;
 
-            const shutdownService = new ShutdownService();
+            const shutdownService = new SystemService();
             await shutdownService.shutdown(restart);
         },
     },

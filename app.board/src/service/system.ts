@@ -1,6 +1,6 @@
 import { exec } from 'child_process';
 
-export class ShutdownService {
+export class SystemService {
     public async shutdown(restart: boolean) {
         exec(`sudo shutdown -${restart ? 'r' : 'h'} now`);
     }
