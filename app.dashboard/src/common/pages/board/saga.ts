@@ -1,8 +1,9 @@
-import { takeLatest, put } from 'redux-saga/effects';
+import { takeLatest, put, call } from 'redux-saga/effects';
 import * as reducer from './reducer';
-import { LoadAction } from '../../store/type';
+import { ServiceAction } from '../../store/type';
+import { BoardService } from '../../services/board';
 
-function* load(action: LoadAction) {
+function* load(action: ServiceAction) {
     if (!action) {
         return;
     }
@@ -22,6 +23,29 @@ function* load(action: LoadAction) {
     }
 }
 
+function* shutdown(action: ServiceAction<{ restart: boolean }>) {
+    if (!action) {
+        return;
+    }
+
+    const {
+        payload: { serviceManager, restart },
+    } = action;
+
+    const boardService = serviceManager.getService('board') as BoardService;
+
+    try {
+        const data = yield call(() => boardService.shutdown(restart));
+        yield put({ type: reducer.LOAD_SUCCESS, payload: { data } });
+    } catch (error) {
+        yield put({ type: reducer.LOAD_FAILURE, payload: error });
+        if (__DEV__) {
+            console.error(error);
+        }
+    }
+}
+
 export const boardPageSaga = function* watcher() {
     yield takeLatest(reducer.LOAD, load);
+    yield takeLatest(reducer.SHUTDOWN, shutdown);
 };

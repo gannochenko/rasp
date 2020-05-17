@@ -1,8 +1,8 @@
 import { takeLatest, put } from 'redux-saga/effects';
 import * as reducer from './reducer';
-import { LoadAction } from '../../store/type';
+import { ServiceAction } from '../../store/type';
 
-function* load(action: LoadAction) {
+function* load(action: ServiceAction) {
     if (!action) {
         return;
     }

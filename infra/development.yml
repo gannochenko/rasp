@@ -21,7 +21,7 @@ services:
       - HTTP__PORT__BUNDLE_ANALYSER=3010
       - NETWORK__CORS=
       - TEMPLATE__PATH=./index.html
-      - "NETWORK__API=http://localhost:4000"
+      - NETWORK__API=http://localhost:5000
     labels:
       com.list.name: Dashboard
       com.list.link.analyzer: "Bundle analyzer|http://localhost:3010"

@@ -9,4 +9,5 @@ export const Picture = styled.div`
     ${backgroundCover(Board4b)}
     width: 512px;
     height: 344px;
+    margin-bottom: 1rem;
 `;

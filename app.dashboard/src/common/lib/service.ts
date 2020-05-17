@@ -1,14 +1,33 @@
+import Axios from 'axios';
 import { ApolloClient } from 'apollo-client';
 import { ApolloLink } from 'apollo-link';
 import { onError } from 'apollo-link-error';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-export abstract class ApolloService {
-    private apollo?: ApolloClient<unknown>;
-    private url = '';
+export abstract class Service {
+    private static apollo?: ApolloClient<unknown>;
+    private static url = '';
 
-    protected getApollo() {
+    protected static getUrl() {
+        if (!this.url) {
+            this.url = process.env.NETWORK__API || '';
+            if (__DEV__ && document) {
+                this.url = this.url.replace(
+                    'localhost',
+                    document.location.hostname,
+                );
+            }
+        }
+
+        return this.url;
+    }
+
+    protected static getAxios() {
+        return Axios;
+    }
+
+    protected static getApollo() {
         if (!this.apollo) {
             this.apollo = new ApolloClient({
                 link: ApolloLink.from([
@@ -36,19 +55,5 @@ export abstract class ApolloService {
         }
 
         return this.apollo;
-    }
-
-    protected getUrl() {
-        if (!this.url) {
-            this.url = process.env.API__URL || '';
-            if (__DEV__ && document) {
-                this.url = this.url.replace(
-                    'localhost',
-                    document.location.hostname,
-                );
-            }
-        }
-
-        return this.url;
     }
 }

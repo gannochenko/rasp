@@ -1,4 +1,4 @@
-import { LOAD, UNLOAD } from './reducer';
+import { LOAD, SHUTDOWN, UNLOAD } from './reducer';
 import { Dispatch } from '../../store/type';
 import { ServiceManager } from '../../lib';
 
@@ -14,5 +14,13 @@ export const mapDispatchToProps = (dispatch: Dispatch) => ({
         dispatch({
             type: UNLOAD,
             payload: {},
+        }),
+    dispatchShutdown: (serviceManager: ServiceManager, restart: boolean) =>
+        dispatch({
+            type: SHUTDOWN,
+            payload: {
+                restart,
+                serviceManager,
+            },
         }),
 });

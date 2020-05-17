@@ -5,6 +5,7 @@ export const LOAD = 'board.load';
 export const LOAD_SUCCESS = 'board.load.success';
 export const LOAD_FAILURE = 'board.load.failure';
 export const UNLOAD = 'board.unload';
+export const SHUTDOWN = 'board.shutdown';
 
 export const initialState: BoardPageState = {
     loading: false,
@@ -18,6 +19,7 @@ export const boardPageReducer = (
 ) => {
     switch (action.type) {
         case LOAD:
+        case SHUTDOWN:
             return { ...state, loading: true };
         case LOAD_SUCCESS:
             return {

@@ -1,9 +1,9 @@
 import { takeLatest, put } from 'redux-saga/effects';
 import * as reducer from './reducer';
-import { LoadAction } from '../../store/type';
+import { ServiceAction } from '../../store/type';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function* load(action: LoadAction) {
+function* load(action: ServiceAction) {
     try {
         const user = {};
         yield put({ type: reducer.LOAD_SUCCESS, payload: { user } });
