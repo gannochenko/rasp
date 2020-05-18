@@ -36,10 +36,10 @@ export class ServiceManager {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     public getService(name: string) {
         if (!this.services[name]) {
-            this.services[name] = services[name]
-                ? // @ts-ignore
-                  new services[name]()
-                : null;
+            if (services[name]) {
+                // @ts-ignore
+                this.services[name] = new services[name]();
+            }
         }
 
         return this.services[name];

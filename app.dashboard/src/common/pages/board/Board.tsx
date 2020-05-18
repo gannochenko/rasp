@@ -2,12 +2,12 @@ import React, { FunctionComponent, useState, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { RendererType, withNotification } from '@gannochenko/ui';
 import Grid from '@material-ui/core/Grid';
-import { Button, Box } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import LinearProgress from '@material-ui/core/LinearProgress';
 
 import { withClient, usePage } from '../../lib';
 
@@ -15,7 +15,13 @@ import { Container, Copyright, Layout, SEO } from '../../components';
 import { BoardPagePropsType, BoardPageOwnPropsType } from './type';
 import { mapDispatchToProps } from './dispatch';
 
-import { Picture } from './style';
+import {
+    Picture,
+    ConsumptionIndicator,
+    Buttons,
+    IndicatorPanel,
+    Indicators,
+} from './style';
 import { ObjectLiteral } from '../../../type';
 
 const ACTION_RESTART = 'R';
@@ -50,7 +56,7 @@ const BoardPageComponent: FunctionComponent<BoardPagePropsType> = (props) => {
                 <h1>Board</h1>
                 <Grid container spacing={3}>
                     <Grid item xs={6}>
-                        <Box marginRight={2} display="inline-block">
+                        <Buttons>
                             <Button
                                 color="primary"
                                 variant="contained"
@@ -59,8 +65,6 @@ const BoardPageComponent: FunctionComponent<BoardPagePropsType> = (props) => {
                             >
                                 Shutdown
                             </Button>
-                        </Box>
-                        <Box display="inline-block">
                             <Button
                                 color="primary"
                                 variant="contained"
@@ -69,9 +73,28 @@ const BoardPageComponent: FunctionComponent<BoardPagePropsType> = (props) => {
                             >
                                 Restart
                             </Button>
-                        </Box>
+                        </Buttons>
 
-                        <LinearProgress />
+                        <Indicators>
+                            <IndicatorPanel>
+                                <Typography variant="h3" gutterBottom>
+                                    Memory: 699 mb
+                                </Typography>
+                                <ConsumptionIndicator
+                                    variant="determinate"
+                                    value={50}
+                                />
+                            </IndicatorPanel>
+                            <IndicatorPanel>
+                                <Typography variant="h3" gutterBottom>
+                                    CPU: 600 %
+                                </Typography>
+                                <ConsumptionIndicator
+                                    variant="determinate"
+                                    value={50}
+                                />
+                            </IndicatorPanel>
+                        </Indicators>
                     </Grid>
                     <Grid item xs={6}>
                         <Picture />

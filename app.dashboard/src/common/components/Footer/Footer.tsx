@@ -13,7 +13,6 @@ export const Footer: FunctionComponent<FooterPropsType> = ({
             <Container contentAlign="center">
                 <Copyright>
                     &copy; 2020 &mdash; current &laquo;Rasp Dashboard&raquo;
-                    team
                 </Copyright>
                 <Links>
                     <Link to="/cookie-policy" inverse underline="hover">
