@@ -20,4 +20,23 @@ export class BoardService extends Service {
             },
         });
     }
+
+    async getStatus() {
+        return Service.getApollo().query({
+            query: gql`
+                query {
+                    getStatus {
+                        data {
+                            memoryFree
+                            memoryAvailable
+                            cpuUsage
+                        }
+                        errors {
+                            code
+                        }
+                    }
+                }
+            `,
+        });
+    }
 }

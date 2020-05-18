@@ -23,31 +23,25 @@ import {
     Indicators,
 } from './style';
 import { ObjectLiteral } from '../../../type';
+import { useShutdown, useStatus } from './hooks';
 
-const ACTION_RESTART = 'R';
-const ACTION_HALT = 'H';
+import { ACTION_RESTART } from './constants';
+import { getMemoryUsage, round } from './util';
 
 const BoardPageComponent: FunctionComponent<BoardPagePropsType> = (props) => {
     usePage(props);
+    const {
+        open,
+        onAskRestart,
+        onAskHalt,
+        onCloseAsk,
+        onConfirm,
+        actionType,
+    } = useShutdown(props);
+    useStatus(props);
 
-    const { dispatchShutdown, serviceManager, loading } = props;
-
-    const [open, setOpen] = useState(false);
-    const [actionType, setActionType] = useState(ACTION_RESTART);
-
-    const onAskRestart = useCallback(() => {
-        setActionType(ACTION_RESTART);
-        setOpen(true);
-    }, []);
-    const onAskHalt = useCallback(() => {
-        setActionType(ACTION_HALT);
-        setOpen(true);
-    }, []);
-    const onCloseAsk = useCallback(() => setOpen(false), []);
-    const onConfirm = useCallback(() => {
-        setOpen(false);
-        dispatchShutdown(serviceManager, actionType === ACTION_RESTART);
-    }, [actionType, setOpen]);
+    const { loading } = props;
+    const memoryUsage = getMemoryUsage(props.memoryAvailable, props.memoryFree);
 
     return (
         <>
@@ -78,20 +72,20 @@ const BoardPageComponent: FunctionComponent<BoardPagePropsType> = (props) => {
                         <Indicators>
                             <IndicatorPanel>
                                 <Typography variant="h3" gutterBottom>
-                                    Memory: 699 mb
+                                    Memory: {round(memoryUsage.value / 1024)} mb
                                 </Typography>
                                 <ConsumptionIndicator
                                     variant="determinate"
-                                    value={50}
+                                    value={memoryUsage.percent}
                                 />
                             </IndicatorPanel>
                             <IndicatorPanel>
                                 <Typography variant="h3" gutterBottom>
-                                    CPU: 600 %
+                                    CPU: {round(props.cpuUsage || 0)} %
                                 </Typography>
                                 <ConsumptionIndicator
                                     variant="determinate"
-                                    value={50}
+                                    value={props.cpuUsage || 0}
                                 />
                             </IndicatorPanel>
                         </Indicators>

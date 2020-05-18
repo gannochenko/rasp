@@ -6,6 +6,8 @@ export const LOAD_SUCCESS = 'board.load.success';
 export const LOAD_FAILURE = 'board.load.failure';
 export const UNLOAD = 'board.unload';
 export const SHUTDOWN = 'board.shutdown';
+export const STATUS = 'board.status';
+export const STATUS_UPDATE = 'board.status.update';
 
 export const initialState: BoardPageState = {
     loading: false,
@@ -29,6 +31,11 @@ export const boardPageReducer = (
                 error: null,
                 ...action.payload,
             };
+        case STATUS_UPDATE:
+            return {
+                ...state,
+                ...action.payload,
+            };
         case LOAD_FAILURE:
             return {
                 ...state,
@@ -37,6 +44,7 @@ export const boardPageReducer = (
                 error: action.payload,
             };
         case UNLOAD:
+        case STATUS:
             return { ...initialState };
         default:
             return state;
