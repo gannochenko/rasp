@@ -10,5 +10,9 @@ export const boardImplementation = {
             const shutdownService = new SystemService();
             await shutdownService.shutdown(restart);
         },
+        getStatus: async () => {
+            const shutdownService = new SystemService();
+            return shutdownService.getStatus();
+        },
     },
 };

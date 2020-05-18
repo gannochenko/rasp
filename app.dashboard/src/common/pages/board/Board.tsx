@@ -7,6 +7,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 import { withClient, usePage } from '../../lib';
 
@@ -69,6 +70,8 @@ const BoardPageComponent: FunctionComponent<BoardPagePropsType> = (props) => {
                                 Restart
                             </Button>
                         </Box>
+
+                        <LinearProgress />
                     </Grid>
                     <Grid item xs={6}>
                         <Picture />
@@ -82,7 +85,13 @@ const BoardPageComponent: FunctionComponent<BoardPagePropsType> = (props) => {
 
                 <Dialog open={open} onClose={onCloseAsk}>
                     <DialogTitle>Sure?</DialogTitle>
-                    <DialogContent>This board will be restarted.</DialogContent>
+                    <DialogContent>
+                        This board will be{' '}
+                        {actionType === ACTION_RESTART
+                            ? 'restarted'
+                            : 'shut down'}
+                        .
+                    </DialogContent>
                     <DialogActions>
                         <Button onClick={onCloseAsk} color="primary" autoFocus>
                             Cancel

@@ -2,6 +2,7 @@ syntax = "proto3";
 
 service Board {
     rpc shutdown (ShutdownRequest) returns (ShutdownReply) {}
+    rpc getStatus (GetStatusRequest) returns (GetStatusReply) {}
 }
 
 message ShutdownRequest {
@@ -9,4 +10,13 @@ message ShutdownRequest {
 }
 
 message ShutdownReply {
+}
+
+message GetStatusRequest {
+}
+
+message GetStatusReply {
+    int32 memoryFree = 1;
+    int32 memoryAvailable = 2;
+    float cpuUsage = 3;
 }

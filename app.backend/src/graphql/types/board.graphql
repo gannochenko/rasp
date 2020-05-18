@@ -1,15 +1,26 @@
-type ShutdownResult {
+type BoardShutdownResult {
     errors: [Error]
 }
-#
+
+type BoardStatus {
+    memoryAvailable: Int
+    memoryFree: Int
+    cpuUsage: Float
+}
+
+type BoardStatusResult {
+    data: BoardStatus
+    errors: [Error]
+}
+
 #input SampleInput {
 #    title: String
 #}
 
-#type Query {
-#    getSample(id: String!): SampleResult
-#}
+type Query {
+    getStatus: BoardStatusResult
+}
 
 type Mutation {
-    shutdownBoard(restart: Boolean): ShutdownResult
+    shutdownBoard(restart: Boolean): BoardShutdownResult
 }

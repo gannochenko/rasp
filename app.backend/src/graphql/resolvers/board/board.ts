@@ -3,6 +3,26 @@ import { ShutdownBoardArguments } from './type';
 import { Context } from '../../type';
 
 export const boardResolvers = {
+    Query: {
+        getStatus: async (
+            source: any,
+            args: ShutdownBoardArguments,
+            context: Context /* , ast: any */,
+        ) => {
+            const result = new Result();
+
+            result.data = context.grpc
+                .getBoard()
+                .getStatus({})
+                .catch((error: Error) =>
+                    result.errors.push({
+                        code: 'failure',
+                    }),
+                );
+
+            return result;
+        },
+    },
     Mutation: {
         shutdownBoard: async (
             source: any,
@@ -12,10 +32,7 @@ export const boardResolvers = {
             const { restart } = args;
             const result = new Result();
 
-            const res = await context.grpc.getBoard().shutdown({ restart });
-
-            console.log('result:');
-            console.log(res);
+            await context.grpc.getBoard().shutdown({ restart });
 
             return result;
         },
