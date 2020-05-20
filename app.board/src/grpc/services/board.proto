@@ -3,6 +3,7 @@ syntax = "proto3";
 service Board {
     rpc shutdown (ShutdownRequest) returns (ShutdownReply) {}
     rpc getStatus (GetStatusRequest) returns (GetStatusReply) {}
+    rpc getInfo (GetInfoRequest) returns (GetInfoReply) {}
 }
 
 message ShutdownRequest {
@@ -20,4 +21,12 @@ message GetStatusReply {
     int32 memoryAvailable = 2;
     float cpuUsage = 3;
     float cpuTemperature = 4;
+}
+
+message GetInfoRequest {
+}
+
+message GetInfoReply {
+    string serialNumber = 1;
+    string ip = 2;
 }

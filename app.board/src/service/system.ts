@@ -18,6 +18,13 @@ export class SystemService {
         };
     }
 
+    public async getInfo() {
+        return {
+            serialNumber: (await raspiInfo.getSerialNumber()).trim(),
+            ip: (await raspiInfo.getIP()).trim(),
+        };
+    }
+
     private async getCPU() {
         const usage = (await cpuse.usage()) as string[];
 

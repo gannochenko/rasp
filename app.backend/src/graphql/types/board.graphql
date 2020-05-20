@@ -14,12 +14,23 @@ type BoardStatusResult {
     errors: [Error]
 }
 
+type BoardInfo {
+    serialNumber: String
+    ip: String
+}
+
+type BoardInfoResult {
+    data: BoardInfo
+    errors: [Error]
+}
+
 #input SampleInput {
 #    title: String
 #}
 
 type Query {
     getStatus: BoardStatusResult
+    getInfo: BoardInfoResult
 }
 
 type Mutation {

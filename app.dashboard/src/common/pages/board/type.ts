@@ -12,6 +12,8 @@ export type BoardPagePropsType = BoardPageOwnPropsType & {
     memoryAvailable: number;
     memoryFree: number;
     callId: number;
+    serialNumber: string;
+    ip: string;
 } & NotificationContextPropsType &
     ControllerProperties;
 

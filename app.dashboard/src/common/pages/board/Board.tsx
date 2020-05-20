@@ -21,6 +21,7 @@ import {
     Buttons,
     IndicatorPanel,
     Indicators,
+    Info,
 } from './style';
 import { ObjectLiteral } from '../../../type';
 import { useShutdown, useStatus } from './hooks';
@@ -40,8 +41,11 @@ const BoardPageComponent: FunctionComponent<BoardPagePropsType> = (props) => {
     } = useShutdown(props);
     useStatus(props);
 
-    const { loading, cpuUsage, cpuTemperature } = props;
+    const { loading, cpuUsage, cpuTemperature, serialNumber, ip } = props;
     const memoryUsage = getMemoryUsage(props.memoryAvailable, props.memoryFree);
+
+    console.log(serialNumber);
+    console.log(ip);
 
     return (
         <>
@@ -101,6 +105,11 @@ const BoardPageComponent: FunctionComponent<BoardPagePropsType> = (props) => {
                         </Indicators>
                     </Grid>
                     <Grid item xs={6}>
+                        <Info>
+                            <b>Serial number</b>: {serialNumber}
+                            <br />
+                            <b>IP</b>: {ip}
+                        </Info>
                         <Picture />
                         <Copyright
                             author="Jstrom99"

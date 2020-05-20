@@ -41,4 +41,22 @@ export class BoardService extends Service {
             fetchPolicy: 'no-cache',
         });
     }
+
+    async getInfo() {
+        return Service.getApollo().query({
+            query: gql`
+                query {
+                    getInfo {
+                        data {
+                            serialNumber
+                            ip
+                        }
+                        errors {
+                            code
+                        }
+                    }
+                }
+            `,
+        });
+    }
 }

@@ -12,9 +12,22 @@ function* load(action: ServiceAction) {
         payload: { serviceManager },
     } = action;
 
+    const boardService = serviceManager.getService('board') as BoardService;
+
     try {
-        const data = {};
-        yield put({ type: reducer.LOAD_SUCCESS, payload: { data } });
+        const result = (yield call(() => boardService.getInfo())).data.getInfo;
+        if (!result.errors.length) {
+            yield put({
+                type: reducer.LOAD_SUCCESS,
+                payload: { ...result.data },
+            });
+        } else {
+            const error = result.errors[0];
+            yield put({ type: reducer.LOAD_FAILURE, payload: error });
+            if (__DEV__) {
+                console.error(error);
+            }
+        }
     } catch (error) {
         yield put({ type: reducer.LOAD_FAILURE, payload: error });
         if (__DEV__) {

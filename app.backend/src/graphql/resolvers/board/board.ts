@@ -22,6 +22,24 @@ export const boardResolvers = {
 
             return result;
         },
+        getInfo: async (
+            source: any,
+            args: ShutdownBoardArguments,
+            context: Context /* , ast: any */,
+        ) => {
+            const result = new Result();
+
+            result.data = context.grpc
+                .getBoard()
+                .getInfo({})
+                .catch((error: Error) =>
+                    result.errors.push({
+                        code: 'failure',
+                    }),
+                );
+
+            return result;
+        },
     },
     Mutation: {
         shutdownBoard: async (
