@@ -10,6 +10,7 @@ export type BoardPagePropsType = BoardPageOwnPropsType & {
     cpuUsage: number;
     memoryAvailable: number;
     memoryFree: number;
+    callId: number;
 } & NotificationContextPropsType &
     ControllerProperties;
 

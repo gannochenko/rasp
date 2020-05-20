@@ -34,15 +34,15 @@ export const useShutdown = (props: BoardPagePropsType) => {
 };
 
 export const useStatus = (props: BoardPagePropsType) => {
-    const { dispatchStatus, serviceManager } = props;
+    const { dispatchStatus, serviceManager, callId } = props;
 
     useEffect(() => {
-        const interval = setInterval(() => {
+        const timer = setTimeout(() => {
             dispatchStatus(serviceManager);
         }, 1000);
 
         return () => {
-            clearInterval(interval);
+            clearTimeout(timer);
         };
-    }, []);
+    }, [callId]);
 };

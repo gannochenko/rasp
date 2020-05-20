@@ -44,7 +44,6 @@ export const boardPageReducer = (
                 error: action.payload,
             };
         case UNLOAD:
-        case STATUS:
             return { ...initialState };
         default:
             return state;

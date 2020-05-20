@@ -62,11 +62,9 @@ function* status(action: ServiceAction<{ restart: boolean }>) {
         if (!result.errors.length) {
             yield put({
                 type: reducer.STATUS_UPDATE,
-                payload: { ...result.data },
+                payload: { ...result.data, callId: Math.random() },
             });
         }
-
-        //
     } catch (error) {
         if (__DEV__) {
             console.error(error);

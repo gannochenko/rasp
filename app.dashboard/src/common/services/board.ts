@@ -37,6 +37,7 @@ export class BoardService extends Service {
                     }
                 }
             `,
+            fetchPolicy: 'no-cache',
         });
     }
 }
