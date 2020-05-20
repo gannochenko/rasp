@@ -20,7 +20,7 @@ export const ConsumptionIndicator = withStyles({
         borderRadius: 2,
     },
     bar: {
-        borderRadius: 20,
+        borderRadius: 2,
     },
 })(LinearProgress);
 

@@ -1,6 +1,7 @@
 import { exec } from 'child_process';
 import { readFile as readFileCb } from 'fs';
 import { promisify } from 'util';
+import cpuse from 'cpuse';
 
 const readFile = promisify(readFileCb);
 
@@ -16,22 +17,13 @@ export class SystemService {
         };
     }
 
-    /**
-     * https://rosettacode.org/wiki/Linux_CPU_utilization
-     */
     private async getCPU() {
-        const timeString = (await readFile('/proc/stat'))
-            .toString('utf8')
-            .split(/\n/)[0]
-            .substr(3)
-            .trim();
-        const times = timeString.split(/\s+/).map((item) => parseInt(item, 10));
-
-        const total = times.reduce((result, item) => result + item, 0);
-        const activePart = 1 - times[3] / total;
+        const usage = (await cpuse.usage()) as string[];
 
         return {
-            cpuUsage: activePart * 100,
+            cpuUsage:
+                usage.reduce((result, cpu) => result + parseInt(cpu, 10), 0) /
+                usage.length,
         };
     }
 

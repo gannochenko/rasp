@@ -37,10 +37,12 @@ export const useStatus = (props: BoardPagePropsType) => {
     const { dispatchStatus, serviceManager } = props;
 
     useEffect(() => {
-        setTimeout(() => {
+        const interval = setInterval(() => {
             dispatchStatus(serviceManager);
         }, 1000);
 
-        return () => {};
+        return () => {
+            clearInterval(interval);
+        };
     }, []);
 };
