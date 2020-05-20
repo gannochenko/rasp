@@ -22,10 +22,10 @@ export class BoardService extends Service {
     }
 
     async getStatus() {
-        return Service.getApollo().query({
+        const result = await Service.getApollo().query({
             query: gql`
                 query {
-                    getStatus {
+                    getBoardStatus {
                         data {
                             memoryFree
                             memoryAvailable
@@ -40,13 +40,15 @@ export class BoardService extends Service {
             `,
             fetchPolicy: 'no-cache',
         });
+
+        return result.data.getBoardStatus;
     }
 
     async getInfo() {
-        return Service.getApollo().query({
+        const result = await Service.getApollo().query({
             query: gql`
                 query {
-                    getInfo {
+                    getBoardInfo {
                         data {
                             serialNumber
                             ip
@@ -58,5 +60,7 @@ export class BoardService extends Service {
                 }
             `,
         });
+
+        return result.data.getBoardInfo;
     }
 }

@@ -4,7 +4,7 @@ import { Context } from '../../type';
 
 export const boardResolvers = {
     Query: {
-        getStatus: async (
+        getBoardStatus: async (
             source: any,
             args: ShutdownBoardArguments,
             context: Context /* , ast: any */,
@@ -22,7 +22,7 @@ export const boardResolvers = {
 
             return result;
         },
-        getInfo: async (
+        getBoardInfo: async (
             source: any,
             args: ShutdownBoardArguments,
             context: Context /* , ast: any */,

@@ -15,7 +15,7 @@ function* load(action: ServiceAction) {
     const boardService = serviceManager.getService('board') as BoardService;
 
     try {
-        const result = (yield call(() => boardService.getInfo())).data.getInfo;
+        const result = yield call(() => boardService.getInfo());
         if (!result.errors.length) {
             yield put({
                 type: reducer.LOAD_SUCCESS,
@@ -70,8 +70,7 @@ function* status(action: ServiceAction<{ restart: boolean }>) {
     const boardService = serviceManager.getService('board') as BoardService;
 
     try {
-        const result = (yield call(() => boardService.getStatus())).data
-            .getStatus;
+        const result = yield call(() => boardService.getStatus());
         if (!result.errors.length) {
             yield put({
                 type: reducer.STATUS_UPDATE,

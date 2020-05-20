@@ -29,8 +29,8 @@ type BoardInfoResult {
 #}
 
 type Query {
-    getStatus: BoardStatusResult
-    getInfo: BoardInfoResult
+    getBoardStatus: BoardStatusResult
+    getBoardInfo: BoardInfoResult
 }
 
 type Mutation {
