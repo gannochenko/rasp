@@ -30,6 +30,7 @@ export class BoardService extends Service {
                             memoryFree
                             memoryAvailable
                             cpuUsage
+                            cpuTemperature
                         }
                         errors {
                             code

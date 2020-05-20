@@ -6,6 +6,7 @@ type BoardStatus {
     memoryAvailable: Int
     memoryFree: Int
     cpuUsage: Float
+    cpuTemperature: Float
 }
 
 type BoardStatusResult {

@@ -40,7 +40,7 @@ const BoardPageComponent: FunctionComponent<BoardPagePropsType> = (props) => {
     } = useShutdown(props);
     useStatus(props);
 
-    const { loading, cpuUsage } = props;
+    const { loading, cpuUsage, cpuTemperature } = props;
     const memoryUsage = getMemoryUsage(props.memoryAvailable, props.memoryFree);
 
     return (
@@ -85,7 +85,17 @@ const BoardPageComponent: FunctionComponent<BoardPagePropsType> = (props) => {
                                 </Typography>
                                 <ConsumptionIndicator
                                     variant="determinate"
-                                    value={props.cpuUsage || 0}
+                                    value={cpuUsage || 0}
+                                />
+                            </IndicatorPanel>
+                            <IndicatorPanel>
+                                <Typography variant="h3" gutterBottom>
+                                    CPU Temp: {round(cpuTemperature || 0)}{' '}
+                                    &#8451;
+                                </Typography>
+                                <ConsumptionIndicator
+                                    variant="determinate"
+                                    value={cpuTemperature || 0}
                                 />
                             </IndicatorPanel>
                         </Indicators>

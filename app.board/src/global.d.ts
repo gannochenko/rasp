@@ -8,3 +8,4 @@ declare module '*.proto' {
 }
 
 declare module 'cpuse';
+declare module 'raspberry-info';

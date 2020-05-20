@@ -8,6 +8,7 @@ export type BoardPagePropsType = BoardPageOwnPropsType & {
     dispatchShutdown: (serviceManager: ServiceManager, restart: boolean) => {};
     dispatchStatus: (serviceManager: ServiceManager) => {};
     cpuUsage: number;
+    cpuTemperature: number;
     memoryAvailable: number;
     memoryFree: number;
     callId: number;

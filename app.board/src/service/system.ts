@@ -2,6 +2,7 @@ import { exec } from 'child_process';
 import { readFile as readFileCb } from 'fs';
 import { promisify } from 'util';
 import cpuse from 'cpuse';
+import raspiInfo from 'raspberry-info';
 
 const readFile = promisify(readFileCb);
 
@@ -24,6 +25,7 @@ export class SystemService {
             cpuUsage:
                 usage.reduce((result, cpu) => result + parseInt(cpu, 10), 0) /
                 usage.length,
+            cpuTemperature: parseFloat(await raspiInfo.getCPUTemperature()),
         };
     }
 
