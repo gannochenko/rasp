@@ -1,4 +1,5 @@
 import { SystemService } from '../../service/system';
+import { IOService } from '../../service/io';
 
 export const boardImplementation = {
     Board: {
@@ -17,6 +18,10 @@ export const boardImplementation = {
         getInfo: async () => {
             const shutdownService = new SystemService();
             return shutdownService.getInfo();
+        },
+        toggleLED: async () => {
+            const shutdownService = new IOService();
+            return shutdownService.toggleLED();
         },
     },
 };

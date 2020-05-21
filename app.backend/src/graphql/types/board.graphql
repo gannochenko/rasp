@@ -2,6 +2,10 @@ type BoardShutdownResult {
     errors: [Error]
 }
 
+type BoardToggleLEDResult {
+    errors: [Error]
+}
+
 type BoardStatus {
     memoryAvailable: Int
     memoryFree: Int
@@ -35,4 +39,5 @@ type Query {
 
 type Mutation {
     shutdownBoard(restart: Boolean): BoardShutdownResult
+    toggleBoardLED: BoardToggleLEDResult
 }

@@ -4,6 +4,7 @@ service Board {
     rpc shutdown (ShutdownRequest) returns (ShutdownReply) {}
     rpc getStatus (GetStatusRequest) returns (GetStatusReply) {}
     rpc getInfo (GetInfoRequest) returns (GetInfoReply) {}
+    rpc toggleLED (ToggleLEDRequest) returns (ToggleLEDReply) {}
 }
 
 message ShutdownRequest {
@@ -29,4 +30,10 @@ message GetInfoRequest {
 message GetInfoReply {
     string serialNumber = 1;
     string ip = 2;
+}
+
+message ToggleLEDRequest {
+}
+
+message ToggleLEDReply {
 }
