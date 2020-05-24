@@ -63,4 +63,18 @@ export class BoardService extends Service {
 
         return result.data.getBoardInfo;
     }
+
+    async toggleLED() {
+        return Service.getApollo().mutate({
+            mutation: gql`
+                mutation ShutdownBoard($restart: Boolean) {
+                    shutdownBoard(restart: $restart) {
+                        errors {
+                            code
+                        }
+                    }
+                }
+            `,
+        });
+    }
 }

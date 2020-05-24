@@ -139,12 +139,14 @@ module.exports = (env, argv) => {
                 __TEST__: false,
             }),
             !development &&
-                new CopyPlugin([
-                    {
-                        from: path.join(__dirname, 'package.json'),
-                        to: path.join(destinationFolder, 'package.json'),
-                    },
-                ]),
+                new CopyPlugin({
+                    patterns: [
+                        {
+                            from: path.join(__dirname, 'package.json'),
+                            to: path.join(destinationFolder, 'package.json'),
+                        },
+                    ],
+                }),
             development &&
                 new NodemonPlugin({
                     nodeArgs: devArgs,

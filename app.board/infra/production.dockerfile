@@ -1,4 +1,4 @@
-FROM node:13
+FROM node:latest
 RUN apt-get update && apt-get install -y --no-install-recommends vim && apt-get clean
 
 WORKDIR /app
@@ -6,7 +6,8 @@ WORKDIR /app
 ENV NODE_ENV=production
 
 COPY ./build/ .
-RUN yarn
+COPY ./package.json .
+RUN yarn install --production=true
 
 EXPOSE 8000
 CMD [ "yarn", "start" ]
