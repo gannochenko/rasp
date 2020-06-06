@@ -29,7 +29,7 @@
         "@babel/polyfill": "^7.8.7",
         "@gannochenko/etc": "^1.0.3",
         "@gannochenko/express.mvc": "^1.0.0",
-        "apollo-server-express": "^2.13.1",
+        "apollo-server-express": "^2.14.2",
         "body-parser": "^1.19.0",
         "clone-deep": "^4.0.1",
         "cors": "^2.8.5",
