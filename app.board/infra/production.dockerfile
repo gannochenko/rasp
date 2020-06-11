@@ -1,4 +1,4 @@
-FROM node:latest
+FROM arm32v7/node:13
 RUN apt-get update && apt-get install -y --no-install-recommends vim && apt-get clean
 
 WORKDIR /app
