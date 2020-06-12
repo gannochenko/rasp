@@ -2,7 +2,7 @@ type BoardShutdownResult {
     errors: [Error]
 }
 
-type BoardToggleLEDResult {
+type UpdateBoardLEDArrayResult {
     errors: [Error]
 }
 
@@ -39,5 +39,5 @@ type Query {
 
 type Mutation {
     shutdownBoard(restart: Boolean): BoardShutdownResult
-    toggleBoardLED: BoardToggleLEDResult
+    updateBoardLEDArray: UpdateBoardLEDArrayResult
 }

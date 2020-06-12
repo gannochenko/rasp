@@ -1,5 +1,6 @@
 import { BinaryValue, Gpio } from 'onoff';
 import { riseEdge } from './util';
+import { ObjectLiteral } from '../type';
 
 export type Vector = BinaryValue[];
 
@@ -7,6 +8,25 @@ export class Registry {
     private readonly dataPort: Gpio;
     private readonly sRCPort: Gpio;
     private readonly rCPort: Gpio;
+
+    private static instances: ObjectLiteral<Registry> = {};
+
+    public static get(
+        dataPortNumber: number,
+        shiftRegistryClockPortNumber: number,
+        registryClockPortNumber: number,
+    ) {
+        const key = `${dataPortNumber}_${shiftRegistryClockPortNumber}_${registryClockPortNumber}`;
+        if (!(key in this.instances)) {
+            this.instances[key] = new this(
+                dataPortNumber,
+                shiftRegistryClockPortNumber,
+                registryClockPortNumber,
+            );
+        }
+
+        return this.instances[key];
+    }
 
     constructor(
         dataPortNumber: number,

@@ -19,9 +19,9 @@ export const boardImplementation = {
             const shutdownService = new SystemService();
             return shutdownService.getInfo();
         },
-        toggleLED: async () => {
+        updateLEDArray: async () => {
             const shutdownService = new IOService();
-            return shutdownService.toggleLED();
+            return shutdownService.updateLEDArray();
         },
     },
 };

@@ -54,14 +54,14 @@ export const boardResolvers = {
 
             return result;
         },
-        toggleBoardLED: async (
+        updateBoardLEDArray: async (
             source: any,
             args: ShutdownBoardArguments,
             context: Context /* , ast: any */,
         ) => {
             const result = new Result();
 
-            await context.grpc.getBoard().toggleLED({});
+            await context.grpc.getBoard().updateLEDArray({});
 
             return result;
         },

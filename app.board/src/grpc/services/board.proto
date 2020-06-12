@@ -4,7 +4,7 @@ service Board {
     rpc shutdown (ShutdownRequest) returns (ShutdownReply) {}
     rpc getStatus (GetStatusRequest) returns (GetStatusReply) {}
     rpc getInfo (GetInfoRequest) returns (GetInfoReply) {}
-    rpc toggleLED (ToggleLEDRequest) returns (ToggleLEDReply) {}
+    rpc updateLEDArray (ToggleLEDRequest) returns (ToggleLEDReply) {}
 }
 
 message ShutdownRequest {

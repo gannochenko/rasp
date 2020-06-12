@@ -15,7 +15,7 @@ function* load(action: ServiceAction) {
     const boardService = serviceManager.getService('board') as BoardService;
 
     try {
-        const result = yield call(() => boardService.toggleLED());
+        const result = yield call(() => boardService.updateLEDArray());
         if (result.errors.length) {
             const error = result.errors[0];
             yield put({ type: reducer.LOAD_FAILURE, payload: error });

@@ -3,11 +3,15 @@ import { readFile as readFileCb } from 'fs';
 import { promisify } from 'util';
 import cpuse from 'cpuse';
 import raspiInfo from 'raspberry-info';
+import { Registry } from '../lib/registry';
 
 const readFile = promisify(readFileCb);
 
 export class SystemService {
     public async shutdown(restart: boolean) {
+        const registry = Registry.get(27, 4, 17);
+        await registry.reset();
+
         exec(`sudo shutdown -${restart ? 'r' : 'h'} now`);
     }
 
