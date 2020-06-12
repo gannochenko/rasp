@@ -4,17 +4,16 @@ import { riseEdge } from './util';
 export type Vector = BinaryValue[];
 
 export class Registry {
-    private dataPort: Gpio;
-    private sRCPort: Gpio;
-    private rCPort: Gpio;
+    private readonly dataPort: Gpio;
+    private readonly sRCPort: Gpio;
+    private readonly rCPort: Gpio;
 
     constructor(
         dataPortNumber: number,
         shiftRegistryClockPortNumber: number,
         registryClockPortNumber: number,
-        private length: number = 8,
+        private readonly length: number = 8,
     ) {
-        // reset here
         this.dataPort = new Gpio(dataPortNumber, 'out');
         this.sRCPort = new Gpio(shiftRegistryClockPortNumber, 'out');
         this.rCPort = new Gpio(registryClockPortNumber, 'out');
@@ -31,9 +30,9 @@ export class Registry {
 
     async set(data: Vector) {
         for (let i = 0; i < data.length; i += 1) {
-            const bit = data[i];
+            const flag = data[i];
 
-            await this.dataPort.write(bit);
+            await this.dataPort.write(flag);
             await riseEdge(this.sRCPort);
         }
 
