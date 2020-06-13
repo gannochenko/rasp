@@ -16,6 +16,7 @@ function* load(action: ServiceAction) {
 
     try {
         const result = yield call(() => boardService.getInfo());
+
         if (!result.errors.length) {
             yield put({
                 type: reducer.LOAD_SUCCESS,

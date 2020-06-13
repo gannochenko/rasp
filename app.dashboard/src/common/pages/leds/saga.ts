@@ -7,6 +7,17 @@ function* load(action: ServiceAction) {
     if (!action) {
         return;
     }
+
+    yield put({
+        type: reducer.LOAD_SUCCESS,
+        payload: { data: {} },
+    });
+}
+
+function* update(action: ServiceAction) {
+    if (!action) {
+        return;
+    }
     const {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         payload: { serviceManager },

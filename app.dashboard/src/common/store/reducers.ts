@@ -3,6 +3,7 @@ import {
     homePageReducer,
     boardPageReducer,
     cookiePolicyPageReducer,
+    ledsPageReducer,
 } from '../pages';
 
 export default {
@@ -10,4 +11,5 @@ export default {
     home: homePageReducer,
     board: boardPageReducer,
     cookiePolicy: cookiePolicyPageReducer,
+    leds: ledsPageReducer,
 };

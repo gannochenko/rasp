@@ -25,6 +25,7 @@ import {
     ForbiddenPageRenderer,
     BoardPageRenderer,
     CookiePolicyRenderer,
+    LedsPageRenderer,
 } from '../../pages';
 import { ObjectLiteral } from '../../../type';
 import { NotificationUI } from '../NotificationUI';
@@ -65,6 +66,7 @@ const ApplicationUIComponent: FunctionComponent<ApplicationProperties> = ({
                             path="/board"
                             renderer={BoardPageRenderer}
                         />
+                        <Route exact path="/leds" renderer={LedsPageRenderer} />
                         <Route
                             exact
                             path="/cookie-policy"

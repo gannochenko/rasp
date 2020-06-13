@@ -44,9 +44,6 @@ const BoardPageComponent: FunctionComponent<BoardPagePropsType> = (props) => {
     const { loading, cpuUsage, cpuTemperature, serialNumber, ip } = props;
     const memoryUsage = getMemoryUsage(props.memoryAvailable, props.memoryFree);
 
-    console.log(serialNumber);
-    console.log(ip);
-
     return (
         <>
             <SEO title="Board" />

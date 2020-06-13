@@ -27,6 +27,7 @@ export const Menu: FunctionComponent<Props> = () => {
             <Main>
                 <Items>
                     <Item to="/board">Board</Item>
+                    <Item to="/leds">LEDs</Item>
                 </Items>
                 <Hamburger onClick={onHamburgerClick}>
                     <Bar />
@@ -37,6 +38,9 @@ export const Menu: FunctionComponent<Props> = () => {
             <MobileItems open={mobileMenuOpen}>
                 <MobileItem to="/board" onClick={onMobileItemClick}>
                     Board
+                </MobileItem>
+                <MobileItem to="/leds" onClick={onMobileItemClick}>
+                    LEDs
                 </MobileItem>
             </MobileItems>
         </MenuRoot>
