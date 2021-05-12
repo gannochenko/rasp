@@ -36,7 +36,7 @@
         "debug": "^4.1.1",
         "express": "^4.17.1",
         "graphql": "^15.0.0",
-        "grpc": "^1.24.2",
+        "grpc": "^1.24.9",
         "helmet": "^3.22.0",
         "merge-graphql-schemas": "^1.7.8",
         "moment": "^2.25.3",
